@@ -1,0 +1,60 @@
+// COLORS
+
+$color-primary:                 #5292B3;
+$color-secondary:               #B86971;
+
+$color-danger:                  #dd5b5b;
+$color-success:                 #5bdd98;
+$color-warning:                 #eec050;
+
+$color-base-dark:               #222425;
+$color-base-light:              #e1e1e1;
+$color-base-gray-light:         #A5BFCC;
+$color-base-gray-medium:        darken($color-base-gray-light, 25%);
+$color-base-gray-dark:          darken($color-base-gray-light, 50%);
+
+$color-base-emphasis-light:     lighten($color-primary, 20%);
+$color-base-emphasis-medium:    $color-primary;
+$color-base-emphasis-dark:      darken($color-primary, 20%);
+
+$color-background:              $color-base-light;
+
+$color-link:                    $color-base-emphasis-light;
+$color-link-active:             $color-base-emphasis-medium;
+$color-link-hover:              $color-base-emphasis-medium;
+
+// FONT
+
+@import url('https://fonts.googleapis.com/css?family=Roboto|Gugi');
+
+$base-font-family:              'Roboto', sans-serif;
+
+$font-color-dark:               $color-base-dark;
+$font-color-medium:             $color-base-gray-medium;
+$font-dolor-light:              $color-base-light;
+
+$font-size:                     20px;
+$font-size-xs:                  $font-size * 0.5;
+$font-size-s:                   $font-size * 0.7;
+$font-size-m:                   $font-size * 1.2;
+$font-size-l:                   $font-size * 1.5;
+$font-size-xl:                  $font-size * 2;
+
+// SIZE
+
+$base-spacing:                  10px;
+
+$content-width:                 1050px;
+$footer-height:                 150px;
+
+// BREAKPOINTS
+
+$breakpoints: (
+  "sm": 767px,
+  "md": 992px,
+  "lg": 1199px
+) !default;
+
+@mixin transition {
+  transition:                   .2s ease;
+}

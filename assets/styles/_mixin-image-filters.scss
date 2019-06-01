@@ -1,0 +1,25 @@
+$filter-values: (
+  '5': 5,
+  '10': 10,
+  '25': 25,
+  '50': 50,
+  '75': 75,
+  '100': 100
+) !default;
+
+@each $name, $value in $filter-values {
+  .image-filter-blur-#{$name} {
+    filter:                   blur(#{$value}px);
+    -webkit-filter:           blur(#{$value}px);
+  }
+
+  .image-filter-grayscale-#{$name} {
+    filter:                   grayscale($value * 1%);
+    -webkit-filter:           grayscale($value * 1%);
+  }
+
+  .image-filter-sepia-#{$name} {
+    filter:                   sepia($value * 1%);
+    -webkit-filter:           sepia($value * 1%);
+  }
+}
