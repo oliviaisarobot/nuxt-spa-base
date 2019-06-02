@@ -9,8 +9,14 @@
 <script>
 export default {
   props: {
-    page: String,
-    text: String,
+    page: {
+      type: String,
+      default: ''
+    },
+    text: {
+      type: String,
+      default: ''
+    },
     variant: {
       type: String,
       default: 'primary'

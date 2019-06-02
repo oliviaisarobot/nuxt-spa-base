@@ -7,15 +7,15 @@
       b-col#nav-holder.d-flex.align-items-center.justify-content-end
         a(
           v-for="(anchor, index) in links"
-          :class="{ 'd-none d-md-inline-block': !tooManyMenuItems, 'd-none': tooManyMenuItems }"
+          :class="{ 'd-none d-md-inline-block pl-4': !tooManyMenuItems, 'd-none': tooManyMenuItems }"
           :href="'#' + anchor"
           :key="index"
-          ).pl-4 {{ anchor }}
-        a(
-          :class="{ 'd-md-none': !tooManyMenuItems }"
+          ) {{ anchor }}
+        div(
+          :class="{ 'd-md-none cursor-pointer': !tooManyMenuItems, 'cursor-pointer': tooManyMenuItems }"
           role="button"
           @click="showMenu = !showMenu"
-          )#dropdown-menu.cursor-pointer
+          )#dropdown-menu
           div(v-for="i in 3" :key="i").menu-line
           div(:class="{ 'show': showMenu }").menu-container
             a(

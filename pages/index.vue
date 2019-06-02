@@ -11,6 +11,7 @@
         p {{ $t('placeholders.paragraph') }}
       template(slot="second")
         p {{ $t('placeholders.paragraph') }}
+    block-slider(:slides="slides")
     block-tiles(:tiles="tilesTwo", :fade-images="true")
       template(slot="tile-text")
         h2 {{ $t('placeholders.header') }}
@@ -18,6 +19,7 @@
       template(slot="first")
         h1.text-right Lorem ipsum dolor sit amet
         p.text-right {{ $t('placeholders.paragraph') }}
+    block-slider(:slides="slides" :text-only="true")
     block-content
       template(slot="first")
         p {{ $t('placeholders.paragraph') }}
@@ -28,11 +30,13 @@
 
 <script>
 import BlockContent from '~/components/block/Content'
+import BlockSlider from '~/components/block/Slider'
 import BlockTiles from '~/components/block/Tiles'
 
 export default {
   components: {
     BlockContent,
+    BlockSlider,
     BlockTiles
   },
   computed: {
@@ -51,10 +55,23 @@ export default {
         { title: '', text: '', img: require('~/assets/images/blank-image.svg') },
         { title: '', text: '', img: require('~/assets/images/blank-image.svg') }
       ]
+    },
+    slides() {
+      return [
+        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short'), img: '' },
+        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short'), img: '' },
+        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short'), img: '' }
+      ]
+    },
+    slidesNoImg() {
+      return [
+        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short') },
+        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short') },
+        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short') }
+      ]
     }
   },
   mounted() {
-    console.log('CONTENT BLOCKS', this.$refs.page.children)
     // this.$store.commit('browser/setAnchors', [])
   }
 }
