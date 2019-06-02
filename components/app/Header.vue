@@ -7,12 +7,17 @@
       b-col#nav-holder.d-flex.align-items-center.justify-content-end
         a(
           v-for="(anchor, index) in links"
+          :class="{ 'd-none d-md-inline-block': !tooManyMenuItems, 'd-none': tooManyMenuItems }"
           :href="'#' + anchor"
           :key="index"
-          ).pl-4.d-none.d-md-inline-block {{ anchor }}
-        a(role="button" @click="showMenu = !showMenu")#dropdown-menu.d-md-none.cursor-pointer
+          ).pl-4 {{ anchor }}
+        a(
+          :class="{ 'd-md-none': !tooManyMenuItems }"
+          role="button"
+          @click="showMenu = !showMenu"
+          )#dropdown-menu.cursor-pointer
           div(v-for="i in 3" :key="i").menu-line
-          div(v-show="showMenu").menu-container
+          div(:class="{ 'show': showMenu }").menu-container
             a(
               v-for="(anchor, index) in links"
               :href="'#' + anchor"
@@ -24,6 +29,7 @@
 
 <script>
 import AppLangSelect from '~/components/app/LangSelect'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -31,13 +37,18 @@ export default {
   },
   data() {
     return {
-      links: ['anchor-1', 'anchor-2'],
       showMenu: false
     }
   },
   computed: {
+    ...mapState({
+      links: state => state.browser.anchors
+    }),
     logo() {
       return require('~/assets/images/blank-image-white.svg')
+    },
+    tooManyMenuItems() {
+      return this.links && this.links.length > 4
     }
   }
 }
@@ -53,6 +64,9 @@ header {
   font-size: $font-size;
   height: 90px;
   padding: .5em 0 .5em 0;
+  position: fixed;
+  z-index: 50;
+  width: 100%;
 
   .header-content {
     #logo {
@@ -79,11 +93,18 @@ header {
 
         .menu-container {
           background-color: $color-base-dark;
+          opacity: 0;
+          overflow: hidden;
           padding: 2em;
           position: absolute;
           top: 90px;
           left: 0;
           right: 0;
+          transition: .3s ease;
+
+          &.show {
+            opacity: 1;
+          }
 
           a {
             &:not(:last-child) {

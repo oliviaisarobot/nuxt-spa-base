@@ -6,7 +6,7 @@
         p {{ $t('placeholders.paragraph') }}
     block-tiles(:tiles="tilesOne")
     hr.container
-    block-content(name="about")
+    block-content
       template(slot="first")
         p {{ $t('placeholders.paragraph') }}
       template(slot="second")
@@ -18,7 +18,7 @@
       template(slot="first")
         h1.text-right Lorem ipsum dolor sit amet
         p.text-right {{ $t('placeholders.paragraph') }}
-    block-content(name="even-more")
+    block-content
       template(slot="first")
         p {{ $t('placeholders.paragraph') }}
         form-button(text="Some text" page="even-more" variant="outline-primary").mt-4
@@ -55,7 +55,7 @@ export default {
   },
   mounted() {
     console.log('CONTENT BLOCKS', this.$refs.page.children)
-    // this.$store.commit('browser/setBlocks', this.$refs.contentBlock)
+    // this.$store.commit('browser/setAnchors', [])
   }
 }
 </script>

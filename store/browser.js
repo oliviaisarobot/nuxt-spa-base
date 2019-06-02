@@ -3,7 +3,7 @@ export const state = () => ({
     height: 0,
     width: 0
   },
-  blocks: [],
+  anchors: ['anchor-1', 'anchor-2', 'anchor-3', 'anchor-4'],
   breakpoints: {
     'sm': 767,
     'md': 992,
@@ -12,8 +12,8 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setBlocks(state, blocks) {
-    state.blocks = blocks
+  setAnchors(state, anchors) {
+    state.anchors = anchors
   },
 
   setBrowserSize(state) {
