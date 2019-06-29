@@ -13,9 +13,9 @@ $color-base-gray-light:         #A5BFCC;
 $color-base-gray-medium:        darken($color-base-gray-light, 25%);
 $color-base-gray-dark:          darken($color-base-gray-light, 50%);
 
-$color-base-emphasis-light:     lighten($color-primary, 20%);
-$color-base-emphasis-medium:    $color-primary;
-$color-base-emphasis-dark:      darken($color-primary, 20%);
+$color-base-emphasis-light:     lighten($color-secondary, 20%);
+$color-base-emphasis-medium:    $color-secondary;
+$color-base-emphasis-dark:      darken($color-secondary, 20%);
 
 $color-background:              $color-base-light;
 

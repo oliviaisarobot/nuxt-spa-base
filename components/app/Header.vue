@@ -65,7 +65,7 @@ header {
   height: 90px;
   padding: .5em 0 .5em 0;
   position: fixed;
-  z-index: 50;
+  z-index: 100;
   width: 100%;
 
   .header-content {

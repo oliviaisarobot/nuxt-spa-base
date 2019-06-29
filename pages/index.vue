@@ -19,7 +19,7 @@
       template(slot="first")
         h1.text-right Lorem ipsum dolor sit amet
         p.text-right {{ $t('placeholders.paragraph') }}
-    block-slider(:slides="slides" :text-only="true")
+    block-slider(:slides="slides")
     block-content
       template(slot="first")
         p {{ $t('placeholders.paragraph') }}
@@ -58,16 +58,9 @@ export default {
     },
     slides() {
       return [
-        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short'), img: '' },
-        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short'), img: '' },
-        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short'), img: '' }
-      ]
-    },
-    slidesNoImg() {
-      return [
-        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short') },
-        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short') },
-        { caption: this.$t('placeholders.header'), text: this.$t('placeholders.paragraph-short') }
+        { title: this.$t('placeholders.header') + ' 1', text: this.$t('placeholders.paragraph-short'), img: '' },
+        { title: this.$t('placeholders.header') + ' 2', text: this.$t('placeholders.paragraph-short'), img: '' },
+        { title: this.$t('placeholders.header') + ' 3', text: this.$t('placeholders.paragraph-short'), img: '' }
       ]
     }
   },
