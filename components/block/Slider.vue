@@ -6,9 +6,11 @@
           v-for="(value, index) in slides"
           :class="{ 'active': index === activeSlide }"
           :key="index"
+          @click="selectSlide(index)"
           ).indicator
       div(
         v-for="(slide, index) in slides"
+        v-touch:swipe="swipeHandler"
         :class="{ 'active': index === activeSlide }"
         :key="index"
         ).slide
@@ -22,7 +24,7 @@ export default {
   props: {
     interval: {
       type: Number,
-      default: 4000
+      default: 6000
     },
     slides: {
       type: Array,
@@ -43,21 +45,39 @@ export default {
   },
   mounted() {
     document.documentElement.style.setProperty('--interval', this.interval + 'ms')
-    this.timer = setInterval(() => {
-      this.nextSlide()
-    }, this.interval + 500)
+    this.animateSlides()
   },
   destroyed() {
     clearInterval(this.timer)
   },
   methods: {
+    animateSlides() {
+      clearInterval(this.timer)
+      this.timer = setInterval(() => {
+        this.nextSlide()
+      }, this.interval + 500)
+    },
     nextSlide() {
       if (this.activeSlide + 1 < this.slides.length) this.activeSlide += 1
       else this.activeSlide = 0
     },
+    previousSlide() {
+      if (this.activeSlide - 1 >= 0) this.activeSlide -= 1
+      else this.activeSlide = this.slides.length - 1
+    },
     resolveImgPath(path) {
       if (!path) return
       return require(path)
+    },
+    selectSlide(i) {
+      if (i < this.slides.length && i >= 0) {
+        this.activeSlide = i
+        this.animateSlides()
+      }
+    },
+    swipeHandler(direction) {
+      if (direction === 'right') this.previousSlide()
+      else if (direction === 'left') this.nextSlide()
     }
   }
 }
@@ -77,6 +97,11 @@ export default {
   overflow: hidden;
   position: relative;
   text-align: center;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 
   .slide {
     background-color: $color-secondary;
@@ -108,9 +133,9 @@ export default {
   @keyframes slideIn {
     0% {
       opacity: 0;
-      transform: translateX(100%);
+      transform: translateX(30%);
     }
-    50% {
+    66% {
       opacity: 0;
     }
     100% {
@@ -124,12 +149,12 @@ export default {
       opacity: 1;
       transform: translateX(0%);
     }
-    50% {
+    85% {
       opacity: 0;
     }
     100% {
       opacity: 0;
-      transform: translateX(-100%);
+      transform: translateX(-15%);
     }
   }
 
@@ -143,6 +168,7 @@ export default {
     .indicator {
       background-color: rgba(0, 0, 0, .25);
       border-radius: 50%;
+      cursor: pointer;
       display: inline-block;
       height: 10px;
       transition: .3s ease-out;

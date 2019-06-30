@@ -19,6 +19,7 @@ import nuxt_plugin_axios_ba297c3c from 'nuxt_plugin_axios_ba297c3c' // Source: .
 import nuxt_plugin_analytics_2e48c327 from 'nuxt_plugin_analytics_2e48c327' // Source: ..\\plugins\\analytics.js (mode: 'client')
 import nuxt_plugin_googlemaps_ab35f716 from 'nuxt_plugin_googlemaps_ab35f716' // Source: ..\\plugins\\google-maps (mode: 'client')
 import nuxt_plugin_formelements_30cec98d from 'nuxt_plugin_formelements_30cec98d' // Source: ..\\plugins\\form-elements.js (mode: 'all')
+import nuxt_plugin_vuetouchevents_b675309a from 'nuxt_plugin_vuetouchevents_b675309a' // Source: ..\\plugins\\vue-touch-events.js (mode: 'all')
 
 // Component: <NoSsr>
 Vue.component(NoSsr.name, NoSsr)
@@ -188,6 +189,10 @@ async function createApp(ssrContext) {
 
   if (typeof nuxt_plugin_formelements_30cec98d === 'function') {
     await nuxt_plugin_formelements_30cec98d(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_vuetouchevents_b675309a === 'function') {
+    await nuxt_plugin_vuetouchevents_b675309a(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first

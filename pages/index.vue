@@ -17,7 +17,7 @@
         h2 {{ $t('placeholders.header') }}
     block-content(:double="false").image-content-block.second-banner.image-filter-grayscale-100.text-light
       template(slot="first")
-        h1.text-right Lorem ipsum dolor sit amet
+        h1.text-right {{ $t('placeholders.header') }}
         p.text-right {{ $t('placeholders.paragraph') }}
     block-slider(:slides="slides")
     block-content

@@ -25,7 +25,8 @@ module.exports = {
   plugins: [
     { src: '~/plugins/analytics.js', ssr: false },
     { src: '~/plugins/google-maps', ssr: false },
-    '~/plugins/form-elements.js'
+    '~/plugins/form-elements.js',
+    '~/plugins/vue-touch-events.js'
   ],
   modules: [
     '@nuxtjs/axios',
