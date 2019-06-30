@@ -43,6 +43,9 @@ module.exports = {
       locales: [
         { code: 'en', iso: 'en-GB', name: 'English' },
         { code: 'hu', iso: 'hu-HU', name: 'Magyar' }
+        /* { code: 'pl', iso: 'pl-PL', name: 'Polski' },
+        { code: 'ru', iso: 'ru-RU', name: 'Russian' },
+        { code: 'fi', iso: 'fi-FI', name: 'Russian' } */
       ],
       defaultLocale: 'en'
     }]
