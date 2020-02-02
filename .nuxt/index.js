@@ -11,11 +11,11 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_bootstrapvue_17c5c3de from 'nuxt_plugin_bootstrapvue_17c5c3de' // Source: .\\bootstrap-vue.js (mode: 'all')
-import nuxt_plugin_pluginseo_0600b9c0 from 'nuxt_plugin_pluginseo_0600b9c0' // Source: .\\nuxt-i18n\\plugin.seo.js (mode: 'all')
-import nuxt_plugin_pluginrouting_1b0b7717 from 'nuxt_plugin_pluginrouting_1b0b7717' // Source: .\\nuxt-i18n\\plugin.routing.js (mode: 'all')
-import nuxt_plugin_pluginmain_5e83a3b8 from 'nuxt_plugin_pluginmain_5e83a3b8' // Source: .\\nuxt-i18n\\plugin.main.js (mode: 'all')
-import nuxt_plugin_axios_ba297c3c from 'nuxt_plugin_axios_ba297c3c' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_bootstrapvue_60b92f64 from 'nuxt_plugin_bootstrapvue_60b92f64' // Source: .\\bootstrap-vue.js (mode: 'all')
+import nuxt_plugin_pluginseo_0adffe6d from 'nuxt_plugin_pluginseo_0adffe6d' // Source: .\\nuxt-i18n\\plugin.seo.js (mode: 'all')
+import nuxt_plugin_pluginrouting_3f8363e4 from 'nuxt_plugin_pluginrouting_3f8363e4' // Source: .\\nuxt-i18n\\plugin.routing.js (mode: 'all')
+import nuxt_plugin_pluginmain_0caeb20b from 'nuxt_plugin_pluginmain_0caeb20b' // Source: .\\nuxt-i18n\\plugin.main.js (mode: 'all')
+import nuxt_plugin_axios_64ab5635 from 'nuxt_plugin_axios_64ab5635' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_analytics_2e48c327 from 'nuxt_plugin_analytics_2e48c327' // Source: ..\\plugins\\analytics.js (mode: 'client')
 import nuxt_plugin_googlemaps_ab35f716 from 'nuxt_plugin_googlemaps_ab35f716' // Source: ..\\plugins\\google-maps (mode: 'client')
 import nuxt_plugin_formelements_30cec98d from 'nuxt_plugin_formelements_30cec98d' // Source: ..\\plugins\\form-elements.js (mode: 'all')
@@ -159,24 +159,24 @@ async function createApp(ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_bootstrapvue_17c5c3de === 'function') {
-    await nuxt_plugin_bootstrapvue_17c5c3de(app.context, inject)
+  if (typeof nuxt_plugin_bootstrapvue_60b92f64 === 'function') {
+    await nuxt_plugin_bootstrapvue_60b92f64(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_pluginseo_0600b9c0 === 'function') {
-    await nuxt_plugin_pluginseo_0600b9c0(app.context, inject)
+  if (typeof nuxt_plugin_pluginseo_0adffe6d === 'function') {
+    await nuxt_plugin_pluginseo_0adffe6d(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_pluginrouting_1b0b7717 === 'function') {
-    await nuxt_plugin_pluginrouting_1b0b7717(app.context, inject)
+  if (typeof nuxt_plugin_pluginrouting_3f8363e4 === 'function') {
+    await nuxt_plugin_pluginrouting_3f8363e4(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_pluginmain_5e83a3b8 === 'function') {
-    await nuxt_plugin_pluginmain_5e83a3b8(app.context, inject)
+  if (typeof nuxt_plugin_pluginmain_0caeb20b === 'function') {
+    await nuxt_plugin_pluginmain_0caeb20b(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_ba297c3c === 'function') {
-    await nuxt_plugin_axios_ba297c3c(app.context, inject)
+  if (typeof nuxt_plugin_axios_64ab5635 === 'function') {
+    await nuxt_plugin_axios_64ab5635(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_analytics_2e48c327 === 'function') {
