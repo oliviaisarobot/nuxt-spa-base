@@ -4,7 +4,8 @@ const pkg = require('./package')
 module.exports = {
   env: {
     businessName: 'Business Name',
-    googleApiKey: ''
+    googleApiKey: '',
+    gtagKey: ''
   },
   head: {
     title: pkg.name,
@@ -15,21 +16,27 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'favicon/favicon.ico' }
+    ],
+    script: [
+      { src: 'https://platform.twitter.com/widgets.js', async: true },
+      { src: 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0', async: true, defer: true }
     ]
   },
   loading: { color: '#fff' },
   css: [
     '@/assets/styles/style.scss',
-    '@/node_modules/flag-icon-css/css/flag-icon.min.css'
+    '@/node_modules/flag-icon-css/css/flag-icon.min.css',
+    { src: '~/node_modules/highlight.js/styles/monokai.css', lang: 'css' }
   ],
   plugins: [
-    { src: '~/plugins/analytics.js', ssr: false },
+    '~/plugins/gtag.js',
     { src: '~/plugins/google-maps', ssr: false },
     '~/plugins/form-elements.js',
     '~/plugins/vue-touch-events.js'
   ],
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/markdownit',
     'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
     ['nuxt-i18n', {
@@ -58,6 +65,16 @@ module.exports = {
   ],
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+  markdownit: {
+    html: true,
+    injected: true,
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    use: [
+      'markdown-it-highlightjs'
+    ]
   },
   build: {
     transpile: [/^vue2-google-maps($|\/)/],

@@ -20,10 +20,12 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "cross-env": "^5.2.0",
     "flag-icon-css": "^3.3.0",
+    "markdown-it-highlightjs": "^3.0.0",
     "nuxt": "^2.3.4",
     "nuxt-i18n": "^5.12.3",
     "vue-meta": "^1.5.8",
     "vue-moment": "^4.0.0",
+    "vue-gtag": "^1.5.0",
     "vue2-google-maps": "^0.10.6",
     "vue2-touch-events": "^2.0.0"
   },
