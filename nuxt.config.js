@@ -15,7 +15,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'favicon/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'favicon/favicon.ico' },
+      { rel: 'stylesheet', href: 'http://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css' }
     ],
     script: [
       { src: 'https://platform.twitter.com/widgets.js', async: true },
