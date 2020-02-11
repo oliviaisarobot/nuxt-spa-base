@@ -1,6 +1,14 @@
 # nuxt-spa-base
 
-Nuxt base for a server side rendered single page application
+Nuxt base for a server side rendered single page application, complete with:
+
+* Multi-language support through i18n
+* Multi-language date formatting through momentjs
+* Sophisticated meta tag handling
+* Parallax scrolling
+* Google gtag support (analytics)
+* Facebook share support
+* Twitter share support
 
 ## Meta tags
 

@@ -41,21 +41,24 @@ module.exports = {
     'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
     ['nuxt-i18n', {
+      locales: [
+        { code: 'en', iso: 'en-GB', name: 'English' },
+        { code: 'hu', iso: 'hu-HU', name: 'Magyar' }
+      ],
+      defaultLocale: 'en',
+      detectBrowserLanguage: {
+        useCookie: true,
+        cookieKey: 'i18n_redirected',
+        alwaysRedirect: false,
+        fallbackLocale: 'en'
+      },
       vueI18n: {
         fallbackLocale: 'en',
         messages: {
           hu: require('./locales/hu.json'),
           en: require('./locales/en.json')
         }
-      },
-      locales: [
-        { code: 'en', iso: 'en-GB', name: 'English' },
-        { code: 'hu', iso: 'hu-HU', name: 'Magyar' }
-        /* { code: 'pl', iso: 'pl-PL', name: 'Polski' },
-        { code: 'ru', iso: 'ru-RU', name: 'Russian' },
-        { code: 'fi', iso: 'fi-FI', name: 'Russian' } */
-      ],
-      defaultLocale: 'en'
+      }
     }]
   ],
   rules: [
