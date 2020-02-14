@@ -1,7 +1,7 @@
 <template lang="pug">
   div.layout
     app-header
-    nuxt
+    nuxt#content
     app-footer
 </template>
 

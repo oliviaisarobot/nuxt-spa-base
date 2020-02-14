@@ -1,13 +1,15 @@
-$filter-values: (
+$filter-pct: (
   '5': 5,
   '10': 10,
   '25': 25,
   '50': 50,
   '75': 75,
-  '100': 100
+  '100': 100,
+  '150': 150,
+  '200': 200
 ) !default;
 
-@each $name, $value in $filter-values {
+@each $name, $value in $filter-pct {
   .image-filter-blur-#{$name} {
     filter:                   blur(#{$value}px);
     -webkit-filter:           blur(#{$value}px);
@@ -22,4 +24,29 @@ $filter-values: (
     filter:                   sepia($value * 1%);
     -webkit-filter:           sepia($value * 1%);
   }
+
+  .image-filter-brightness-#{$name} {
+    filter:                   brightness($value / 100);
+    -webkit-filter:           brightness($value / 100);
+  }
+}
+
+@mixin image-filter-blur($value) {
+  filter:                   blur(#{$value}px);
+  -webkit-filter:           blur(#{$value}px);
+}
+
+@mixin image-filter-grayscale($value) {
+  filter:                   grayscale($value * 1%);
+  -webkit-filter:           grayscale($value * 1%);
+}
+
+@mixin image-filter-sepia($value) {
+  filter:                   sepia($value * 1%);
+  -webkit-filter:           sepia($value * 1%);
+}
+
+@mixin image-filter-brightness($value) {
+  filter:                   brightness($value / 100);
+  -webkit-filter:           brightness($value / 100);
 }

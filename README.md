@@ -5,6 +5,7 @@ Nuxt base for a server side rendered single page application, complete with:
 * Multi-language support through i18n
 * Multi-language date formatting through momentjs
 * Sophisticated meta tag handling
+* Text obfuscator which doesn't let web scrapers copy your email, phone and other sensitive information
 * Parallax scrolling
 * Google gtag support (analytics)
 * Facebook share support

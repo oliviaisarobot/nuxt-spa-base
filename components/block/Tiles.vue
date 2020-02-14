@@ -9,22 +9,39 @@
         :class="{ 'cursor-pointer': tile.href }"
         :key="index"
         @click="goTo(tile.href)"
-        ).tile.mb-2.text-center
-        b-img(v-if="tile.img" :alt="tile.title + '-' + index" :src="tile.img" :class="{ 'fade': fadeImages }").tile-image
+        ).tile.mb-4.text-center
+        b-img(
+          v-if="tile.img && !useIcons"
+          :alt="tile.imgAlt || tile.title + '-' + index"
+          :class="{ 'fade': fadeImages, 'small-img': smallImages }"
+          :src="tile.img"
+          :title="tile.imgAlt || tile.title"
+          v-b-tooltip.hover
+          ).tile-image.mb-2
+        i(v-if="useIcons" :class="'mdi-' + tile.icon").mdi
         h3(v-if="tile.title") {{ tile.title }}
         p(v-if="tile.text") {{ tile.text }}
+    slot(name="tile-footer")
 </template>
 
 <script>
 export default {
   props: {
+    useIcons: {
+      type: Boolean,
+      default: false
+    },
     fadeImages: {
+      type: Boolean,
+      default: false
+    },
+    smallImages: {
       type: Boolean,
       default: false
     },
     tiles: {
       type: Array,
-      default: () => { return [] } // expected: [{ title: '', page: '', img: '', text: '' }]
+      default: () => { return [] } // expected: [{ title: '', page: '', img: '', text: '', icon: '' }]
     }
   },
   methods: {
@@ -42,9 +59,22 @@ export default {
 
 .tiles {
   .tile {
+    .mdi {
+      font-size:                $font-size * 4;
+    }
+
     .tile-image {
       max-height:               200px;
-      max-width:                100%;
+      max-width:                90%;
+
+      &.small-img {
+        max-height: 50px!important;
+
+        @include size-below(sm) {
+          max-height:           40px;
+          max-width:            60%;
+        }
+      }
 
       &.fade {
         filter:                 grayscale(100%);
