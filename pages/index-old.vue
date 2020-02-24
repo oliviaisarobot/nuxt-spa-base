@@ -2,18 +2,30 @@
   div
     app-page-heading.index-heading
       template(slot="heading")
-        h1.text-white {{ $t('placeholders.header') }}
-        div.text-white {{ $t('placeholders.paragraph') }}
-    block-tiles(:tiles="tilesOne").mt-8.mb-8.pt-8.pb-8
+        h1 {{ $t('placeholders.he ader') }}
+        div {{ $t('placeholders.paragraph') }}
+    block-tiles(:tiles="tilesOne")
     hr.container
-    block-content.mt-8.mb-8.pt-8.pb-8
+    block-content
       template(slot="first")
         p {{ $t('placeholders.paragraph') }}
       template(slot="second")
         p {{ $t('placeholders.paragraph') }}
-    block-tiles(:tiles="tilesTwo", :fade-images="true").mt-8.mb-8.pt-8.pb-8
-      template(slot="tile-header")
+    block-slider(:slides="slides")
+    block-tiles(:tiles="tilesTwo", :fade-images="true")
+      template(slot="tile-text")
         h2 {{ $t('placeholders.header') }}
+    block-content(:double="false").image-content-block.second-banner.image-filter-grayscale-100.text-light
+      template(slot="first")
+        h1.text-right {{ $t('placeholders.header') }}
+        p.text-right {{ $t('placeholders.paragraph') }}
+    block-slider(:slides="slides")
+    block-content
+      template(slot="first")
+        p {{ $t('placeholders.paragraph') }}
+        form-button(text="Some text" page="even-more" variant="outline-primary").mt-4
+      template(slot="second")
+        b-img(src="~/assets/images/blank-image.svg").image-150
 </template>
 
 <script>
@@ -53,6 +65,9 @@ export default {
         { title: this.$t('placeholders.header') + ' 3', text: this.$t('placeholders.paragraph-short'), img: '' }
       ]
     }
+  },
+  mounted() {
+    // this.$store.commit('browser/setAnchors', [])
   }
 }
 </script>
@@ -60,11 +75,23 @@ export default {
 <style lang="scss">
 @import '~/assets/styles/style.scss';
 
+.image-content-block {
+  height: 500px;
+
+  h1 {
+    padding-top: 2em;
+  }
+}
+
 .index-heading::before {
   background-image: url('../assets/photos/home-office-1867761_1920_Pixabay_by_Pexels.jpg');
 }
 
-.second-banner::before {
-  background-image: url('../assets/photos/pen-4163403_1920_Pixabay_by_Samuel_F_Johanns.jpg');
+.image-150 {
+  max-height: 150px;
+}
+
+.second-banner {
+  background: url('../assets/photos/pen-4163403_1920_Pixabay_by_Samuel_F_Johanns.jpg');
 }
 </style>

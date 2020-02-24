@@ -1,29 +1,41 @@
 <template lang="pug">
-  #languages
-    b-dropdown(right)
-      template(v-slot:button-content)
-        span(:class="flagClasses(currentLocale)")
-        span.code {{ currentLocale }}
-      b-dropdown-item(
+  #languages(v-click-outside="closeDropdown").block
+    button(
+      aria-controls="language-dropdown"
+      @click="showDropdown = !showDropdown"
+      )#lang-dropdown-control.pl-2.pr-2
+      span(:class="flagClasses(currentLocale)")
+    ul(:class="{ 'visible': showDropdown, 'invisible': !showDropdown }")#language-dropdown.absolute.-bottom-0.right-0.p-2.bg-dark.mt-3
+      li(
         v-for="locale in $i18n.locales"
-        :active="currentLocale && currentLocale == locale.code"
         :key="locale.code"
         :title="locale.name"
-        :href="switchLocalePath(locale.code)"
-        v-b-tooltip.hover
-        )
-        span(:class="flagClasses(locale.code)")
-        span.code {{ locale.code }}
+        @click="showDropdown = !showDropdown"
+        ).text-primary.hover_text-dark.hover_bg-primary.hover_underline.focus_text-dark.focus_bg-primary.focus_underline.active_text-contrast.p-2
+        nuxt-link(
+          :active="currentLocale && currentLocale == locale.code"
+          :to="switchLocalePath(locale.code)"
+          )
+          span(:class="flagClasses(locale.code)")
+          .inline-block.uppercase.pl-4.tracking-wide {{ locale.name }}
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      showDropdown: false
+    }
+  },
   computed: {
     currentLocale() {
       return this.$i18n.locale
     }
   },
   methods: {
+    closeDropdown() {
+      this.showDropdown = false
+    },
     flagClasses(code) {
       if (code === 'en') code = 'gb'
       return `flag-icon flag-icon-squared flag-icon-${code}`
@@ -36,13 +48,8 @@ export default {
 @import '~/assets/styles/style.scss';
 
 #languages {
-  .language-select-item {
-    font-size: $font-size-s;
-  }
-
-  .code {
-    padding-left: .5em;
-    text-transform: uppercase;
+  #language-dropdown {
+    @include transition;
   }
 }
 </style>

@@ -1,10 +1,8 @@
 <template lang="pug">
-  div(ref="contentBlock").content-block
-    b-row.container.pt-3.pb-3.mt-4.mb-4
-      b-col(sm="12" :md="double ? '6' : '12'")
-        slot(name="first")
-      b-col(v-if="double" sm="12" md="6")
-        slot(name="second")
+  div.content-block
+    div(:class="{ 'md_grid-cols-2 sm_grid-cols-1': double, 'grid-cols-1': !double }").container.grid.h-full.gap-8
+      slot(name="first")
+      slot(name="second" v-if="double")
 </template>
 
 <script>
@@ -19,23 +17,4 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~/assets/styles/style.scss';
-
-.content-block {
-  background-attachment: fixed!important;
-  background-position: center!important;
-  background-repeat: no-repeat!important;
-  background-size: cover!important;
-  overflow: hidden;
-  width: 100%;
-
-  .container {
-    margin: 0 auto;
-    padding: 2em;
-
-    img {
-      width: 100%;
-    }
-  }
-}
 </style>

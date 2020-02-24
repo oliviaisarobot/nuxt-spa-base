@@ -1,35 +1,46 @@
 <template lang="pug">
-  header.d-flex.justify-content-center
-    b-row.header-content.container
-      b-col(cols="2")#logo
-        nuxt-link(:to="localePath('/')")
-          b-img(:src="logo")
-      b-col#nav-holder.d-flex.align-items-center.justify-content-end
-        a(
-          v-for="(anchor, index) in links"
-          :class="{ 'd-none d-md-inline-block pl-4': !tooManyMenuItems, 'd-none': tooManyMenuItems }"
-          :href="'#' + anchor"
-          :key="index"
-          ) {{ anchor }}
-        div(
-          :class="{ 'd-md-none cursor-pointer': !tooManyMenuItems, 'cursor-pointer': tooManyMenuItems }"
-          role="button"
+  header(:class="{ 'dark-bg': scrollPosition > 90 }").flex.justify-center
+    #header-content.container.flex.justify-between.p-0
+      #logo.h-full
+        nuxt-link(:to="localePath('index')", :title="$t('meta.description')").flex.items-center.justify-center.h-full.no-underline
+          img(:src="logo").h-full.w-auto.inline-block
+          .inline-block.uppercase.text-white.text-xl.whitespace-no-wrap.pl-3 {{ businessName }}
+      nav#nav-holder.flex.items-center.justify-end
+        ul#main-menu.md_flex.items-center.justify-center.h-full.m-0.flex-no-wrap.sm_hidden
+          li(
+            v-for="(anchor, index) in navShort"
+            v-if="!isMobile"
+            :key="index"
+            ).flex.items-center.justify-center.p-2
+              nuxt-link(
+                :active="currentPath == anchor"
+                :to="localePath(anchor)"
+                ).text-primary.hover_text-contrast.focus_text-contrast.hover_underline.focus_underline.text-m {{ $t('navigation.' + anchor) }}
+        button(
+          aria-controls="menu-collapse"
+          :aria-expanded="showMenu ? 'true' : 'false'"
+          :class="showMenu ? null : 'collapsed'"
           @click="showMenu = !showMenu"
-          )#dropdown-menu
-          div(v-for="i in 3" :key="i").menu-line
-          div(:class="{ 'show': showMenu }").menu-container
-            a(
-              v-for="(anchor, index) in links"
-              :href="'#' + anchor"
-              :key="index"
-              ).d-block {{ anchor }}
-      b-col(cols="2").text-right
+          ).menu-button.flex.items-center.justify-center.text-white.hover_text-contrast.focus_text-contrast.pl-4.pr-4
+          i.material-icons.text-2xl menu
         app-lang-select(:use-flags="true")
+    nav#menu-collapse(:class="{ 'show': showMenu }").bg-dark.border-r.border-primary.flex.justify-center.items-center
+      button(@click="showMenu = !showMenu").absolute.top-0.right-0
+        i.material-icons.text-primary.hover_text-contrast.focus_text-contrast.text-3xl.p-3 close
+      ul.justify-center.w-full
+        li(
+          v-for="(anchor, index) in nav"
+          :key="index"
+          ).p-3.text-primary.hover_text-dark.hover_bg-contrast.focus_text-dark.focus_bg-contrast
+          nuxt-link(
+            :active="currentPath == anchor"
+            :to="localePath(anchor)"
+            ).text-xl {{ $t('navigation.' + anchor) }}
 </template>
 
 <script>
 import AppLangSelect from '~/components/app/LangSelect'
-import { mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   components: {
@@ -41,14 +52,22 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      links: state => state.browser.anchors
+    ...mapGetters({
+      isMobile: 'browser/isMobile'
     }),
+    ...mapState({
+      nav: state => state.browser.nav,
+      navShort: state => state.browser.nav_short,
+      scrollPosition: state => state.browser.window.scrollY
+    }),
+    businessName() {
+      return process.env.businessName
+    },
+    currentPath() {
+      return this.$router.path
+    },
     logo() {
       return require('~/assets/images/blank-image-white.svg')
-    },
-    tooManyMenuItems() {
-      return this.links && this.links.length > 4
     }
   }
 }
@@ -58,61 +77,71 @@ export default {
 @import '~/assets/styles/style.scss';
 
 header {
-  background-color: $color-base-dark;
-  border-bottom: 3px solid $color-primary;
-  color: $color-base-light;
-  font-size: $font-size;
-  height: 90px;
-  padding: .5em 0 .5em 0;
+  background-color: transparent;
+  min-height: $header-height;
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   width: 100%;
+  -webkit-transition: background-color 1s linear;
+  -ms-transition: background-color 1s linear;
+  transition: background-color 1s linear;
 
-  .header-content {
-    #logo {
-      img {
-        max-width: 80px;
-      }
+  &.dark-bg {
+    background-color: $color-base-dark!important;
+    -webkit-transition: background-color 1s linear;
+    -ms-transition: background-color 1s linear;
+    transition: background-color 1s linear;
+  }
+
+  #header-content {
+    /* background-color: inherit; */
+    color: inherit;
+    height: $header-height;
+    padding: .5em 0 .5em 0;
+    position: absolute;
+    z-index: inherit;
+  }
+
+  #menu-collapse {
+    border-radius: 0;
+    bottom: 0;
+    box-sizing: content-box;
+    color: white;
+    font-size: .85em;
+    height: 100vh;
+    left: -101%;
+    margin: 0;
+    max-width: 450px;
+    min-height: 560px;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 65%;
+    z-index: 1100;
+    -webkit-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+
+    @include size-below(md) {
+      max-width: 50%;
     }
 
-    #nav-holder {
-      font-size: $font-size-s;
+    @include size-below(sm) {
+      max-width: 100%;
+      width: 100%;
+    }
 
-      #dropdown-menu {
-        z-index: 100;
+    &.show {
+      left: 0;
+      -webkit-transition: all .5s ease-in-out;
+      -ms-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+    }
 
-        .menu-line {
-          background-color: $color-base-light;
-          height: 2px;
-          width: 20px;
-
-          &:not(:last-child) {
-            margin-bottom: 5px;
-          }
-        }
-
-        .menu-container {
-          background-color: $color-base-dark;
-          opacity: 0;
-          overflow: hidden;
-          padding: 2em;
-          position: absolute;
-          top: 90px;
-          left: 0;
-          right: 0;
-          transition: .3s ease;
-
-          &.show {
-            opacity: 1;
-          }
-
-          a {
-            &:not(:last-child) {
-              padding-bottom: 1em;
-            }
-          }
-        }
-      }
+    .nav {
+      height: 100%;
+      padding: 1em 0 1em 0;
     }
   }
 }

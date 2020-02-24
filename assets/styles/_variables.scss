@@ -1,11 +1,13 @@
 // COLORS
 
-$color-primary:                 #5292B3;
-$color-secondary:               #B86971;
+$color-primary:                 #5dbde8;
+$color-secondary:               #632a7a;
 
 $color-danger:                  #dd5b5b;
 $color-success:                 #5bdd98;
 $color-warning:                 #eec050;
+
+$color-contrast:                #dd775f;
 
 $color-base-dark:               #222425;
 $color-base-light:              #e1e1e1;
@@ -25,8 +27,6 @@ $color-link-hover:              $color-base-emphasis-medium;
 
 // FONT
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
 $base-font-family:              'Roboto', sans-serif;
 
 $font-color-dark:               $color-base-dark;
@@ -44,19 +44,20 @@ $font-size-xl:                  $font-size * 2;
 
 $base-spacing:                  10px;
 
-$content-width:                 1050px;
+$header-height:                 60px;
 $footer-height:                 150px;
 
 // BREAKPOINTS
 
 $breakpoints: (
-  "sm": 767px,
-  "md": 992px,
-  "lg": 1199px
+  "sm": 640px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px
 ) !default;
 
 @mixin transition {
-  transition:                   .2s ease;
+  transition:                   .2s ease-in-out;
 }
 
 @mixin noselect {
@@ -66,6 +67,20 @@ $breakpoints: (
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Chrome, Opera and Firefox */
+}
+
+@mixin parallax-bg {
+  background-attachment: fixed!important;
+  background-position: center!important;
+  background-repeat: no-repeat!important;
+  background-size: cover!important;
+}
+
+@mixin bg-before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
 }
 
 .no-select {

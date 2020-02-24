@@ -1,13 +1,16 @@
 export const state = () => ({
   window: {
     height: 0,
-    width: 0
+    width: 767,
+    scrollY: 0
   },
-  anchors: ['anchor-1', 'anchor-2', 'anchor-3', 'anchor-4'],
+  nav_short: ['anchor-1', 'anchor-2', 'anchor-3'],
+  nav: ['anchor-1', 'anchor-2', 'anchor-3', 'anchor-4', 'anchor-5', 'anchor-6'],
   breakpoints: {
-    'sm': 767,
-    'md': 992,
-    'lg': 1199
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280
   }
 })
 
@@ -19,11 +22,17 @@ export const mutations = {
   setBrowserSize(state) {
     state.window.height = window.innerHeight
     state.window.width = window.innerWidth
+  },
+
+  setScrollY(state) {
+    state.window.scrollY = window.scrollY
   }
 }
 
 export const getters = {
   isMobile: (state) => {
-    return state.window.width < state.breakpoints.sm || typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1
+    if (process.browser) {
+      return state.window.width < state.breakpoints.sm || typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1
+    }
   }
 }

@@ -1,11 +1,11 @@
 <template lang="pug">
   footer.d-flex.flex-column.align-items-center
-    b-row.footer-top.container
-      b-col(sm="12" md="4") contact
-      b-col(sm="12" md="4") links
-      b-col(sm="12" md="4") static map
-    b-row.footer-bottom.text-center
-      b-col © {{ year }}. {{ business }}
+    .row.footer-top.container
+      .col(sm="12" md="4") contact
+      .col(sm="12" md="4") links
+      .col(sm="12" md="4") static map
+    .row.footer-bottom.text-center
+      .col © {{ year }}. {{ business }}
 </template>
 
 <script>

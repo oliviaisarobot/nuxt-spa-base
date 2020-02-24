@@ -15,8 +15,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'favicon/favicon.ico' },
-      { rel: 'stylesheet', href: 'http://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css' }
+      { rel: 'icon', type: 'image/x-icon', href: 'favicon/favicon.ico' }
     ],
     script: [
       { src: 'https://platform.twitter.com/widgets.js', async: true },
@@ -33,12 +32,14 @@ module.exports = {
     '~/plugins/gtag.js',
     { src: '~/plugins/google-maps', ssr: false },
     '~/plugins/form-elements.js',
-    '~/plugins/vue-touch-events.js'
+    '~/plugins/click-outside.js',
+    '~/plugins/vue-touch-events.js',
+      { src: '~/plugins/youtube-embed.js', ssr: false }
   ],
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/markdownit',
-    'bootstrap-vue/nuxt',
+    '@nuxtjs/tailwindcss',
     '@nuxtjs/pwa',
     ['nuxt-i18n', {
       locales: [

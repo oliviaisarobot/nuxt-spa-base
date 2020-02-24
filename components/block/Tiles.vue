@@ -1,26 +1,24 @@
 <template lang="pug">
-  div(ref="contentBlock").content-block.container
-    slot(name="tile-text")
-    b-row.tiles.d-flex.justify-content-center.mb-4
-      b-col(
+  div.content-block.container
+    slot(name="tile-header")
+    div.grid.gap-8.grid-cols-12.tiles
+      div(
         v-for="(tile, index) in tiles"
-        :md="tiles.length > 4 ? '3' : '4'"
-        sm="6"
-        :class="{ 'cursor-pointer': tile.href }"
+        :class="tileClass(tile, index)"
         :key="index"
         @click="goTo(tile.href)"
-        ).tile.mb-4.text-center
-        b-img(
+        ).tile.flex.flex-col.items-center.col-span-12
+        img(
           v-if="tile.img && !useIcons"
           :alt="tile.imgAlt || tile.title + '-' + index"
           :class="{ 'fade': fadeImages, 'small-img': smallImages }"
           :src="tile.img"
           :title="tile.imgAlt || tile.title"
           v-b-tooltip.hover
-          ).tile-image.mb-2
-        i(v-if="useIcons" :class="'mdi-' + tile.icon").mdi
-        h3(v-if="tile.title") {{ tile.title }}
-        p(v-if="tile.text") {{ tile.text }}
+          ).tile-image.mb-2.object-center
+        i(v-if="useIcons").material-icons tile.icon
+        h3(v-if="tile.title").text-secondary.p-0.text-center {{ tile.title }}
+        p(v-if="tile.text").mt-6 {{ tile.text }}
     slot(name="tile-footer")
 </template>
 
@@ -49,6 +47,26 @@ export default {
       if (!url) return
       const external = url.startsWith('http')
       external ? window.open(url) : this.$router.push(this.localePath(url))
+    },
+    tileClass(tile, i) {
+      const classes = []
+      const remain = this.tiles.length % 4
+      if (tile.href) classes.push('cursor-pointer')
+      if (this.tiles.length >= 4) {
+        if (i >= this.tiles.length - remain) {
+          classes.push('md_col-span-' + 12 / remain)
+        } else {
+          classes.push('md_col-span-3')
+        }
+      } else {
+        classes.push('md_col-span-4')
+      }
+      if (i < this.tiles.length - 1) {
+        classes.push('sm_col-span-6')
+      } else {
+        classes.push('sm_col-span-12')
+      }
+      return classes
     }
   }
 }
@@ -59,20 +77,16 @@ export default {
 
 .tiles {
   .tile {
-    .mdi {
-      font-size:                $font-size * 4;
-    }
-
     .tile-image {
       max-height:               200px;
-      max-width:                90%;
+      max-width:                200px;
 
       &.small-img {
         max-height: 50px!important;
 
         @include size-below(sm) {
           max-height:           40px;
-          max-width:            60%;
+          max-width:            40px;
         }
       }
 
@@ -90,13 +104,8 @@ export default {
     }
 
     h3 {
-      color:                    $color-primary;
-      font-size:                $font-size-m!important;
-      font-weight:              bold;
       height:                   calc(#{$font-size-m} * 2.5);
       margin:                   0 0 .6em 0!important;
-      padding:                  0!important;
-      text-align:               center;
     }
   }
 }

@@ -23,14 +23,17 @@
     "markdown-it-highlightjs": "^3.0.0",
     "nuxt": "^2.11.0",
     "nuxt-i18n": "^6.5.0",
+    "v-click-outside": "^3.0.1",
+    "vue-gtag": "^1.5.0",
     "vue-meta": "^2.3.1",
     "vue-moment": "^4.1.0",
-    "vue-gtag": "^1.5.0",
+    "vue-youtube-embed": "^2.2.2",
     "vue2-google-maps": "^0.10.6",
     "vue2-touch-events": "^2.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
+    "@nuxtjs/tailwindcss": "^1.3.3",
     "babel-eslint": "^8.2.1",
     "eslint": "^5.0.1",
     "eslint-config-standard": ">=12.0.0",

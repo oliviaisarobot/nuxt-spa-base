@@ -1,6 +1,7 @@
 <template lang="pug">
   div.layout
     app-header
+    app-to-the-top
     nuxt#content
     app-footer
 </template>
@@ -8,11 +9,13 @@
 <script>
 import AppFooter from '~/components/app/Footer.vue'
 import AppHeader from '~/components/app/Header.vue'
+import AppToTheTop from '~/components/app/ToTheTop.vue'
 
 export default {
   components: {
     AppFooter,
-    AppHeader
+    AppHeader,
+    AppToTheTop
   },
   data() {
     return {
@@ -43,6 +46,7 @@ body,
   box-sizing:                       border-box;
   color:                            $font-color-dark;
   font-family:                      $base-font-family;
+  font-size:                        $font-size * 0.8;
   margin:                           0;
   overflow-x:                       hidden;
   padding:                          0;
@@ -62,59 +66,41 @@ body,
   padding:                          0;
 }
 
-a {
-  color:                            $color-link;
-  text-decoration:                  none;
+a,
+a:hover,
+a:focus,
+button,
+button:hover,
+button:focus,
+li,
+li:hover,
+li:focus {
   @include transition;
-
-  &:active, &.nuxt-link-active {
-    color:                          $color-link-active;
-  }
-
-  &:hover {
-    color:                          $color-link-hover;
-    text-decoration:                underline;
-  }
 }
 
 h1 {
-  font-family:                      $base-font-family!important;
-  font-size:                        38px!important;
-  margin:                           20px 0 25px 0!important;
-
-  @include size-below(sm) {
-    font-size:                      34px!important;
-  }
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 h2 {
-  font-family:                      $base-font-family!important;
-  font-size:                        34px!important;
-  margin:                           45px 0 35px 0!important;
-
-  @include size-below(sm) {
-    font-size:                      30px!important;
-  }
+  font-size: 1.7rem;
+  font-weight: bold;
 }
 
 h3 {
-  font-family:                      $base-font-family!important;
-  font-size:                        32px!important;
-  margin:                           45px 0 35px 0!important;
-
-  @include size-below(sm) {
-    font-size:                      28px!important;
-  }
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 h4 {
-  font-family:                      $base-font-family!important;
-  font-size:                        26px!important;
-  margin:                           35px 0 25px 0!important;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
 
-  @include size-below(sm) {
-    font-size:                      22px!important;
-  }
+h5 {
+  font-size: 1.25rem;
+  font-weight: normal;
 }
 
 hr {
@@ -123,15 +109,7 @@ hr {
 }
 
 .container {
-  @include transition;
-  width:                            $content-width;
-
-  @include size-between(sm, md) {
-    width:                          90%;
-  }
-  @include size-below(sm) {
-    width:                          95%;
-  }
+  padding: 0 2em 0 2em;
 }
 
 .cursor-pointer {
