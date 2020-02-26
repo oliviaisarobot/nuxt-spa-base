@@ -74,6 +74,8 @@ $breakpoints: (
   background-position: center!important;
   background-repeat: no-repeat!important;
   background-size: cover!important;
+  transform:translatez(0);
+  -webkit-transform:translatez(0);
 }
 
 @mixin bg-before {
