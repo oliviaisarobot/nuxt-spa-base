@@ -71,6 +71,11 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
+  tailwindcss: {
+    configPath: '~/tailwind.config.js',
+    cssPath: '~/assets/css/tailwind.css',
+    purgeCSSInDev: false
+  },
   router: {
     scrollBehavior: async function(to, from, savedPosition) {
       if (savedPosition) {

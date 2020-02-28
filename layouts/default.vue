@@ -47,15 +47,19 @@ body,
   color:                            $font-color-dark;
   font-family:                      $base-font-family;
   font-size:                        $font-size * 0.8;
-  margin:                           0;
-  overflow-x:                       hidden;
-  padding:                          0;
+  margin:                           0!important;
+  padding:                          0!important;
   position:                         relative;
+  width: 100%!important;
   word-spacing:                     1px;
   -ms-text-size-adjust:             100%;
   -webkit-text-size-adjust:         100%;
   -moz-osx-font-smoothing:          grayscale;
   -webkit-font-smoothing:           antialiased;
+}
+
+body {
+  overflow-x:                       hidden;
 }
 
 *,
@@ -109,6 +113,7 @@ hr {
 }
 
 .container {
+  overflow: hidden;
   padding: 0 2em 0 2em;
 }
 

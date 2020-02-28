@@ -1,12 +1,12 @@
 <template lang="pug">
   header(:class="{ 'dark-bg': scrollPosition > 90 }").flex.justify-center
-    #header-content.container.flex.justify-between.p-0
+    #header-content.container.flex.justify-between.justify-center.p-0
       #logo.h-full
         nuxt-link(:to="localePath('index')", :title="$t('meta.description')").flex.items-center.justify-center.h-full.no-underline
-          img(:src="logo").h-full.w-auto.inline-block
-          .inline-block.uppercase.text-white.text-xl.whitespace-no-wrap.pl-3 {{ businessName }}
+          img(:src="logo").h-full.w-auto.inline-block.pl-4
+          .md_inline-block.hidden.uppercase.text-white.text-xl.whitespace-no-wrap.pl-3 {{ businessName }}
       nav#nav-holder.flex.items-center.justify-end
-        ul#main-menu.md_flex.items-center.justify-center.h-full.m-0.flex-no-wrap.sm_hidden
+        ul#main-menu.hidden.lg_flex.items-center.justify-center.h-full.m-0
           li(
             v-for="(anchor, index) in navShort"
             v-if="!isMobile"

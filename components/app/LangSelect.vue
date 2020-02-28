@@ -1,5 +1,5 @@
 <template lang="pug">
-  #languages(v-click-outside="closeDropdown").block
+  #languages(v-click-outside="closeDropdown").block.pr-4
     button(
       aria-controls="language-dropdown"
       @click="showDropdown = !showDropdown"
