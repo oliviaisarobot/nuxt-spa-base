@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.layout
+  div.layout.bg-light.text-dark.w-screen.relative.p-0.m-0.box-border
     app-header
     app-to-the-top
     nuxt#content
@@ -40,26 +40,24 @@ export default {
 @import '~/assets/styles/style.scss';
 
 html,
-body,
-.layout {
-  background-color:                 $color-background;
+body {
   box-sizing:                       border-box;
-  color:                            $font-color-dark;
   font-family:                      $base-font-family;
   font-size:                        $font-size * 0.8;
   margin:                           0!important;
   padding:                          0!important;
   position:                         relative;
-  width: 100%!important;
+  width:                            100%!important;
   word-spacing:                     1px;
   -ms-text-size-adjust:             100%;
   -webkit-text-size-adjust:         100%;
   -moz-osx-font-smoothing:          grayscale;
   -webkit-font-smoothing:           antialiased;
+  @include transition;
 }
 
 body {
-  overflow-x:                       hidden;
+  /* overflow-x:                       hidden; */
 }
 
 *,

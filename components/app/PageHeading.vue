@@ -27,6 +27,8 @@ export default {
   &:before {
     background-color: $color-secondary;
     background-blend-mode: multiply;
+    clip-path: ellipse(95% 98% at 30% -5%);
+    /* clip-path: polygon(0% 0, 100% 0%, 100% 90%, 0 75%); */
     @include parallax-bg;
     @include bg-before;
     @include image-filter-brightness(80);

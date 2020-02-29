@@ -81,7 +81,7 @@ header {
   min-height: $header-height;
   position: fixed;
   z-index: 1000;
-  width: 100%;
+  width: 100vw;
   -webkit-transition: background-color 1s linear;
   -ms-transition: background-color 1s linear;
   transition: background-color 1s linear;
@@ -97,6 +97,7 @@ header {
     /* background-color: inherit; */
     color: inherit;
     height: $header-height;
+    overflow: visible;
     padding: .5em 0 .5em 0;
     position: absolute;
     z-index: inherit;
@@ -129,7 +130,7 @@ header {
 
     @include size-below(sm) {
       max-width: 100%;
-      width: 100%;
+      width: 100vw;
     }
 
     &.show {
