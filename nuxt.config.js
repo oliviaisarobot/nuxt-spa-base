@@ -11,8 +11,7 @@ module.exports = {
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'favicon/favicon.ico' }
@@ -29,12 +28,13 @@ module.exports = {
     { src: '~/node_modules/highlight.js/styles/monokai.css', lang: 'css' }
   ],
   plugins: [
-    '~/plugins/gtag.js',
-    { src: '~/plugins/google-maps', ssr: false },
-    '~/plugins/form-elements.js',
     '~/plugins/click-outside.js',
+    '~/plugins/form-elements.js',
     '~/plugins/vue-touch-events.js',
-      { src: '~/plugins/youtube-embed.js', ssr: false }
+    '~/plugins/vue-moment.js',
+    { src: '~/plugins/gtag.js', ssr: false },
+    { src: '~/plugins/google-maps', ssr: false },
+    { src: '~/plugins/youtube-embed.js', ssr: false }
   ],
   modules: [
     '@nuxtjs/axios',
@@ -69,7 +69,7 @@ module.exports = {
     }
   ],
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
+    baseURL: "http://localhost:8000/api"
   },
   tailwindcss: {
     configPath: '~/tailwind.config.js',

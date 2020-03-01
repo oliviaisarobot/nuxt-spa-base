@@ -2,7 +2,8 @@
   div.layout.bg-light.text-dark.w-screen.relative.p-0.m-0.box-border
     app-header
     app-to-the-top
-    nuxt#content
+    transition(name='fade')
+      nuxt#content
     app-footer
 </template>
 
@@ -16,6 +17,11 @@ export default {
     AppFooter,
     AppHeader,
     AppToTheTop
+  },
+  head() {
+    return {
+      title: process.env.businessName
+    }
   },
   data() {
     return {
@@ -117,5 +123,18 @@ hr {
 
 .cursor-pointer {
   cursor:                           pointer;
+}
+
+.tag {
+  &:before {
+    content: '#';
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

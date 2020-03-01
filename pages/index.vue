@@ -61,10 +61,10 @@ export default {
 @import '~/assets/styles/style.scss';
 
 .index-heading::before {
-  background-image: url('../assets/photos/home-office-1867761_1920_Pixabay_by_Pexels.jpg');
+  background-image: url('~assets/photos/home-office-1867761_1920_Pixabay_by_Pexels.jpg');
 }
 
 .second-banner::before {
-  background-image: url('../assets/photos/pen-4163403_1920_Pixabay_by_Samuel_F_Johanns.jpg');
+  background-image: url('~assets/photos/pen-4163403_1920_Pixabay_by_Samuel_F_Johanns.jpg');
 }
 </style>
