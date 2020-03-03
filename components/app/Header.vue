@@ -1,5 +1,5 @@
 <template lang="pug">
-  header(:class="{ 'over-bg': scrollPosition > 90 }").flex.justify-center
+  header(:class="{ 'over-bg': scrollPosition > 90 }" ref="header").flex.justify-center
     #header-content.container.flex.justify-between.justify-center.p-0
       #logo.h-full
         nuxt-link(:to="localePath('index')", :title="$t('meta.description')").flex.items-center.justify-center.h-full.no-underline
@@ -25,7 +25,7 @@
           ).menu-button.flex.items-center.justify-center.hover_text-contrast.focus_text-contrast.pl-4.pr-4
           i.material-icons.text-2xl menu
         app-lang-select(:use-flags="true")
-    nav#menu-collapse(:class="{ 'show': showMenu }").bg-dark.border-r.border-primary.flex.justify-center.items-center.animate.slideRight
+    nav#menu-collapse(:class="{ 'show': showMenu }" v-click-outside="closeMenu").bg-dark.border-r.border-primary.flex.justify-center.items-center.animate.slideRight
       button(@click="showMenu = !showMenu").absolute.top-0.right-0
         i.material-icons.text-primary.hover_text-contrast.focus_text-contrast.text-3xl.p-3 close
       ul.justify-center.w-full
@@ -69,6 +69,13 @@ export default {
     },
     logo() {
       return this.scrollPosition < 90 ? require('~/assets/images/blank-image-white.svg') : require('~/assets/images/blank-image.svg')
+    }
+  },
+  methods: {
+    closeMenu(e) {
+      if (e.y > 60 && (e.x > 450 || this.showMenu === true)) {
+        this.showMenu = false
+      }
     }
   }
 }

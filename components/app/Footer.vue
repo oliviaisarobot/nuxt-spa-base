@@ -25,6 +25,9 @@ export default {
     business() {
       return process.env.businessName
     },
+    currentPath() {
+      return this.$router.path
+    },
     year() {
       return new Date().getFullYear()
     }
