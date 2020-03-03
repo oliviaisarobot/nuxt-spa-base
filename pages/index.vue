@@ -11,6 +11,7 @@
         p {{ $t('placeholders.paragraph') }}
       template(slot="second")
         p {{ $t('placeholders.paragraph') }}
+    block-parallax.second-banner
     block-tiles(:tiles="tilesTwo", :fade-images="true").mt-8.mb-8.pt-8.pb-8
       template(slot="tile-header")
         h2 {{ $t('placeholders.header') }}
@@ -19,6 +20,7 @@
 <script>
 import AppPageHeading from '~/components/app/PageHeading'
 import BlockContent from '~/components/block/Content'
+import BlockParallax from '~/components/block/Parallax'
 import BlockSlider from '~/components/block/Slider'
 import BlockTiles from '~/components/block/Tiles'
 
@@ -26,6 +28,7 @@ export default {
   components: {
     AppPageHeading,
     BlockContent,
+    BlockParallax,
     BlockSlider,
     BlockTiles
   },

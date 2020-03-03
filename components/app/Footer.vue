@@ -1,7 +1,7 @@
 <template lang="pug">
   footer.d-flex.flex-column.align-items-center
     nav.row.footer-top.container
-      ul.flex.justify-center.w-full
+      ul.flex.justify-center.w-full.items-center.flex-col.sm_flex-row
         li(
           v-for="(anchor, index) in nav"
           :key="index"
