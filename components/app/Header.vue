@@ -25,7 +25,7 @@
           ).menu-button.flex.items-center.justify-center.hover_text-contrast.focus_text-contrast.pl-4.pr-4
           i.material-icons.text-2xl menu
         app-lang-select(:use-flags="true")
-    nav#menu-collapse(:class="{ 'show': showMenu }").bg-dark.border-r.border-primary.flex.justify-center.items-center
+    nav#menu-collapse(:class="{ 'show': showMenu }").bg-dark.border-r.border-primary.flex.justify-center.items-center.animate.slideRight
       button(@click="showMenu = !showMenu").absolute.top-0.right-0
         i.material-icons.text-primary.hover_text-contrast.focus_text-contrast.text-3xl.p-3 close
       ul.justify-center.w-full
@@ -79,8 +79,10 @@ export default {
 
 header {
   background-color: transparent;
+  left: 0;
   min-height: $header-height;
   position: fixed;
+  top: 0;
   z-index: 1000;
   width: 100vw;
   -webkit-transition: background-color 1s linear;
@@ -109,23 +111,22 @@ header {
   #menu-collapse {
     border-radius: 0;
     bottom: 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
     color: white;
+    display: none;
     font-size: .85em;
     height: 100vh;
-    left: -101%;
+    left: 0;
     margin: 0;
     max-width: 450px;
     min-height: 560px;
+    opacity: 0;
     padding: 0;
     position: absolute;
     text-align: center;
     top: 0;
     width: 65%;
     z-index: 1100;
-    -webkit-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
 
     @include size-below(md) {
       max-width: 50%;
@@ -137,13 +138,11 @@ header {
     }
 
     &.show {
-      left: 0;
-      -webkit-transition: all .5s ease-in-out;
-      -ms-transition: all .5s ease-in-out;
-      transition: all .5s ease-in-out;
+      display: flex;
+      opacity: 1;
     }
 
-    .nav {
+    &.nav {
       height: 100%;
       padding: 1em 0 1em 0;
     }

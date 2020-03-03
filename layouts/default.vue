@@ -62,8 +62,11 @@ body {
   @include transition;
 }
 
-body {
-  /* overflow-x:                       hidden; */
+#content,
+.layout {
+  box-sizing:                       border-box;
+  max-width:                        100%!important;
+  overflow:                         hidden;
 }
 
 *,

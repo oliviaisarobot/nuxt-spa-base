@@ -14,7 +14,6 @@
           :class="{ 'fade': fadeImages, 'small-img': smallImages }"
           :src="tile.img"
           :title="tile.imgAlt || tile.title"
-          v-b-tooltip.hover
           ).tile-image.mb-2
         i(v-if="useIcons").material-icons tile.icon
         h3(v-if="tile.title").text-secondary.p-0.text-center {{ tile.title }}
