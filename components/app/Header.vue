@@ -25,14 +25,14 @@
           ).menu-button.flex.items-center.justify-center.hover_text-contrast.focus_text-contrast.pl-4.pr-4
           i.material-icons.text-2xl menu
         app-lang-select(:use-flags="true")
-    nav#menu-collapse(:class="{ 'show': showMenu }" v-click-outside="closeMenu").bg-dark.border-r.border-primary.flex.justify-center.items-center.animate.slideRight
+    nav#menu-collapse(:class="{ 'show': showMenu }" v-click-outside="closeMenu").bg-light.border-r.border-t.border-primary.flex.justify-center.items-center.animate.slideRight
       button(@click="showMenu = !showMenu").absolute.top-0.right-0
         i.material-icons.text-primary.hover_text-contrast.focus_text-contrast.text-3xl.p-3 close
       ul.justify-center.w-full
         li(
           v-for="(anchor, index) in nav"
           :key="index"
-          ).p-3.text-primary.hover_text-dark.hover_bg-contrast.focus_text-dark.focus_bg-contrast
+          ).p-3.text-secondary.hover_bg-contrast.focus_bg-contrast
           nuxt-link(
             :active="currentPath == anchor"
             :to="localePath(anchor)"
@@ -131,7 +131,7 @@ header {
     padding: 0;
     position: absolute;
     text-align: center;
-    top: 0;
+    top: $header-height;
     width: 65%;
     z-index: 1100;
 
