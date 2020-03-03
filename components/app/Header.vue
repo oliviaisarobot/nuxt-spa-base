@@ -1,10 +1,10 @@
 <template lang="pug">
-  header(:class="{ 'dark-bg': scrollPosition > 90 }").flex.justify-center
+  header(:class="{ 'over-bg': scrollPosition > 90 }").flex.justify-center
     #header-content.container.flex.justify-between.justify-center.p-0
       #logo.h-full
         nuxt-link(:to="localePath('index')", :title="$t('meta.description')").flex.items-center.justify-center.h-full.no-underline
           img(:src="logo").h-full.w-auto.inline-block.pl-4
-          .md_inline-block.hidden.uppercase.text-white.text-xl.whitespace-no-wrap.pl-3 {{ businessName }}
+          .md_inline-block.hidden.uppercase.text-xl.whitespace-no-wrap.pl-3(:class="{ 'text-white': scrollPosition <= 90, 'text-dark': scrollPosition > 90 }") {{ businessName }}
       nav#nav-holder.flex.items-center.justify-end
         ul#main-menu.hidden.lg_flex.items-center.justify-center.h-full.m-0
           li(
@@ -14,14 +14,15 @@
             ).flex.items-center.justify-center.p-2
               nuxt-link(
                 :active="currentPath == anchor"
+                :class="{ 'text-primary': scrollPosition <= 90, 'text-secondary': scrollPosition > 90 }"
                 :to="localePath(anchor)"
-                ).text-primary.hover_text-contrast.focus_text-contrast.hover_underline.focus_underline.text-m {{ $t('navigation.' + anchor) }}
+                ).hover_text-contrast.focus_text-contrast.hover_underline.focus_underline.text-m {{ $t('navigation.' + anchor) }}
         button(
           aria-controls="menu-collapse"
           :aria-expanded="showMenu ? 'true' : 'false'"
-          :class="showMenu ? null : 'collapsed'"
+          :class="{ 'text-white': scrollPosition <= 90, 'text-secondary': scrollPosition > 90, 'collapsed': showMenu }"
           @click="showMenu = !showMenu"
-          ).menu-button.flex.items-center.justify-center.text-white.hover_text-contrast.focus_text-contrast.pl-4.pr-4
+          ).menu-button.flex.items-center.justify-center.hover_text-contrast.focus_text-contrast.pl-4.pr-4
           i.material-icons.text-2xl menu
         app-lang-select(:use-flags="true")
     nav#menu-collapse(:class="{ 'show': showMenu }").bg-dark.border-r.border-primary.flex.justify-center.items-center
@@ -67,7 +68,7 @@ export default {
       return this.$router.path
     },
     logo() {
-      return require('~/assets/images/blank-image-white.svg')
+      return this.scrollPosition < 90 ? require('~/assets/images/blank-image-white.svg') : require('~/assets/images/blank-image.svg')
     }
   }
 }
@@ -86,8 +87,10 @@ header {
   -ms-transition: background-color 1s linear;
   transition: background-color 1s linear;
 
-  &.dark-bg {
-    background-color: $color-base-dark!important;
+  &.over-bg {
+    background-color: $color-base-light!important;
+    box-shadow: 1px 2px 2px $color-base-gray-light;
+    color: $color-base-dark!important;
     -webkit-transition: background-color 1s linear;
     -ms-transition: background-color 1s linear;
     transition: background-color 1s linear;
