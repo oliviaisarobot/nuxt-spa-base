@@ -53,6 +53,7 @@ export default {
 
     &.show {
       display: block;
+      box-shadow: 1px 2px 2px $color-base-gray-light;
     }
   }
 }
