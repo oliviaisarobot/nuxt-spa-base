@@ -25,6 +25,7 @@ import BlockSlider from '~/components/block/Slider'
 import BlockTiles from '~/components/block/Tiles'
 
 export default {
+  layout: 'maintenance',
   components: {
     AppPageHeading,
     BlockContent,
