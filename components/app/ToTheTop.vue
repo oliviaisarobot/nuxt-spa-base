@@ -1,6 +1,6 @@
 <template lang="pug">
-  div(:class="{ 'visible': scrollPosition > 450 }" @click="scrollToTop")#to-the-top
-    a(:title="$t('navigation.scroll-to-the-top')").d-flex.align-items-center.justify-content-center
+  div(:class="{ 'visible': scrollPosition > 450 }" @click="scrollToTop")#to-the-top.animate.slideIn
+    a(:title="$t('navigation.scroll-to-the-top')").flex.items-center.justify-center.bg-secondary.text-white
       i.material-icons arrow_upward
 </template>
 
@@ -24,14 +24,10 @@ export default {
       this.$store.commit('browser/setScrollY')
     },
     scrollToTop() {
-      const c = document.documentElement.scrollTop || document.body.scrollTop
-      if (c > 0) {
-        window.scrollTo({
-          top: 0,
-          left: c - c / 8,
-          behavior: 'smooth'
-        })
-      }
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     }
   }
 }
@@ -41,20 +37,21 @@ export default {
 @import '~/assets/styles/style.scss';
 
 #to-the-top {
-  bottom: 20px;
+  bottom: 50px;
+  display: none;
   opacity: 0;
   color: #fff;
   cursor: pointer;
   opacity: 0;
+  padding: 0;
   position: fixed;
-  right: 20px;
+  right: 50px;
+  touch-action: none;
   visibility: hidden;
   z-index: 1000;
   @include transition;
 
   a {
-    background-color: $color-contrast;
-    color: white;
     font-weight: bold;
     height: 40px;
     width: 40px;
@@ -70,21 +67,26 @@ export default {
   }
 
   &.visible {
+    bottom: 40px;
+    display: block;
     opacity: 0.4;
+    right: 0;
+    visibility: visible;
+    
+    @include size-below(sm) {
+      opacity: 1;
+      /* padding-bottom: 100px; */
+      /* padding-right: 65px; */
+    }
+  }
+  
+  @include size-below(sm) {
     visibility: visible;
   }
 
-  @include size-below(sm) {
-    background-color: $color-base-light;
-
-    &.visible {
-      opacity: 1;
-    }
-  }
-
   @include size-above(lg) {
-    right: 100px;
     bottom: 100px;
+    right: 100px;
   }
 }
 </style>

@@ -1,18 +1,32 @@
 <template lang="pug">
   footer.d-flex.flex-column.align-items-center
-    .row.footer-top.container
-      .col(sm="12" md="4") contact
-      .col(sm="12" md="4") links
-      .col(sm="12" md="4") static map
+    nav.row.footer-top.container
+      ul.flex.justify-center.w-full.items-center.flex-col.sm_flex-row
+        li(
+          v-for="(anchor, index) in nav"
+          :key="index"
+          ).p-3.text-primary.hover_underline.focus_underline
+          nuxt-link(
+            :active="currentPath == anchor"
+            :to="localePath(anchor)"
+            ) {{ $t('navigation.' + anchor) }}
     .row.footer-bottom.text-center
       .col © {{ year }}. {{ business }}
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   computed: {
+    ...mapState({
+      nav: state => state.browser.nav
+    }),
     business() {
       return process.env.businessName
+    },
+    currentPath() {
+      return this.$router.path
     },
     year() {
       return new Date().getFullYear()

@@ -1,8 +1,9 @@
 <template lang="pug">
-  div.layout
+  div.layout.bg-light.text-dark.w-screen.relative.p-0.m-0.box-border
     app-header
     app-to-the-top
-    nuxt#content
+    transition(name='fade')
+      nuxt#content
     app-footer
 </template>
 
@@ -16,6 +17,11 @@ export default {
     AppFooter,
     AppHeader,
     AppToTheTop
+  },
+  head() {
+    return {
+      title: process.env.businessName
+    }
   },
   data() {
     return {
@@ -40,22 +46,27 @@ export default {
 @import '~/assets/styles/style.scss';
 
 html,
-body,
-.layout {
-  background-color:                 $color-background;
+body {
   box-sizing:                       border-box;
-  color:                            $font-color-dark;
   font-family:                      $base-font-family;
   font-size:                        $font-size * 0.8;
-  margin:                           0;
-  overflow-x:                       hidden;
-  padding:                          0;
+  margin:                           0!important;
+  padding:                          0!important;
   position:                         relative;
+  width:                            100%!important;
   word-spacing:                     1px;
   -ms-text-size-adjust:             100%;
   -webkit-text-size-adjust:         100%;
   -moz-osx-font-smoothing:          grayscale;
   -webkit-font-smoothing:           antialiased;
+  @include transition;
+}
+
+#content,
+.layout {
+  box-sizing:                       border-box;
+  max-width:                        100%!important;
+  overflow:                         hidden;
 }
 
 *,
@@ -109,10 +120,24 @@ hr {
 }
 
 .container {
+  overflow: hidden;
   padding: 0 2em 0 2em;
 }
 
 .cursor-pointer {
   cursor:                           pointer;
+}
+
+.tag {
+  &:before {
+    content: '#';
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

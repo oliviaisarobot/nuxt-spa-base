@@ -32,21 +32,26 @@ $filter-pct: (
 }
 
 @mixin image-filter-blur($value) {
-  filter:                   blur(#{$value}px);
-  -webkit-filter:           blur(#{$value}px);
+  filter:                     blur(#{$value}px);
+  -webkit-filter:             blur(#{$value}px);
 }
 
 @mixin image-filter-grayscale($value) {
-  filter:                   grayscale($value * 1%);
-  -webkit-filter:           grayscale($value * 1%);
+  filter:                     grayscale($value * 1%);
+  -webkit-filter:             grayscale($value * 1%);
 }
 
 @mixin image-filter-sepia($value) {
-  filter:                   sepia($value * 1%);
-  -webkit-filter:           sepia($value * 1%);
+  filter:                     sepia($value * 1%);
+  -webkit-filter:             sepia($value * 1%);
 }
 
 @mixin image-filter-brightness($value) {
-  filter:                   brightness($value / 100);
-  -webkit-filter:           brightness($value / 100);
+  filter:                     brightness($value / 100);
+  -webkit-filter:             brightness($value / 100);
+}
+
+@mixin image-filter-multiply-secondary() {
+  background-color:           $color-secondary;
+  background-blend-mode:      multiply;
 }

@@ -1,0 +1,53 @@
+@import 'animations/bounce';
+@import 'animations/fade';
+@import 'animations/float';
+@import 'animations/swing';
+
+@mixin anim-fill-mode-both {
+  animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+}
+
+@mixin anim-name($name) {
+  animation-name: #{$name};
+  -moz-animation-name: #{$name};
+  -ms-animation-name: #{$name};
+  -o-animation-name: #{$name};
+  -webkit-animation-name: #{$name};
+}
+
+@mixin anim-reverse {
+  animation-direction: reverse;
+  -moz-animation-direction: reverse;
+  -ms-animation-direction: reverse;
+  -o-animation-direction: reverse;
+  -webkit-animation-direction: reverse;
+}
+
+$animations: 'bounce', 'fade', 'float', 'slide', 'swing'!default;
+
+@each $anim in $animations {
+  .animate-#{$anim}-in {
+    animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    -ms-animation-duration: 0.5s;
+    -o-animation-duration: 0.5s;
+    -webkit-animation-duration: 0.5s;
+    @include anim-name($anim);
+    @include anim-fill-mode-both;
+  }
+
+  .animate-#{$anim}-out {
+    animation-duration: 0.3s;
+    -moz-animation-duration: 0.3s;
+    -ms-animation-duration: 0.3s;
+    -o-animation-duration: 0.3s;
+    -webkit-animation-duration: 0.3s;
+    @include anim-name($anim);
+    @include anim-fill-mode-both;
+    @include anim-reverse;
+  }
+}
