@@ -1,0 +1,64 @@
+@mixin bounce-start {
+  transform: scale(0.1);
+  -moz-transform: scale(0.1);
+  -ms-transform: scale(0.1);
+  -o-transform: scale(0.1);
+  -webkit-transform: scale(0.1);
+  opacity: 0;
+  -moz-opacity: 0;
+  -ms-opacity: 0;
+  -o-opacity: 0;
+  -webkit-opacity: 0;
+}
+
+@mixin bounce-mid {
+  transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  opacity: 1;
+  -moz-opacity: 1;
+  -ms-opacity: 1;
+  -o-opacity: 1;
+  -webkit-opacity: 1;
+}
+
+@mixin bounce-end {
+  transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  -webkit-transform: scale(1);
+}
+
+
+@keyframes bounce {
+  0% { @include bounce-start; }
+  60% { @include bounce-mid; }
+  100% { @include bounce-end; }
+}
+
+@-moz-keyframes bounce {
+  0% { @include bounce-start; }
+  60% { @include bounce-mid; }
+  100% { @include bounce-end; }
+}
+
+@-ms-keyframes bounce {
+  0% { @include bounce-start; }
+  60% { @include bounce-mid; }
+  100% { @include bounce-end; }
+}
+
+@-o-keyframes bounce {
+  0% { @include bounce-start; }
+  60% { @include bounce-mid; }
+  100% { @include bounce-end; }
+}
+
+@-webkit-keyframes bounce {
+  0% { @include bounce-start; }
+  60% { @include bounce-mid; }
+  100% { @include bounce-end; }
+}

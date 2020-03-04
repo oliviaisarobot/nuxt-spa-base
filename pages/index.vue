@@ -2,8 +2,8 @@
   div
     app-page-heading.index-heading
       template(slot="heading")
-        h1.text-white {{ $t('placeholders.header') }}
-        div.text-white {{ $t('placeholders.paragraph') }}
+        h1.text-white.text-6xl {{ $t('index.h1') }}
+        div.text-white {{ $t('index.lead') }}
     block-tiles(:tiles="tilesOne").mt-8.mb-8.pt-8.pb-8
     hr.container
     block-content.mt-8.mb-8.pt-8.pb-8
@@ -64,10 +64,10 @@ export default {
 @import '~/assets/styles/style.scss';
 
 .index-heading::before {
-  background-image: url('~assets/photos/home-office-1867761_1920_Pixabay_by_Pexels.jpg');
+  background-image: url('~assets/photos/server-1235959_1920_Pixabay_by_Colossus_Cloud.jpg');
 }
 
 .second-banner::before {
-  background-image: url('~assets/photos/pen-4163403_1920_Pixabay_by_Samuel_F_Johanns.jpg');
+  background-image: url('~assets/photos/home-office-1867761_1920_Pixabay_by_Pexels.jpg');
 }
 </style>

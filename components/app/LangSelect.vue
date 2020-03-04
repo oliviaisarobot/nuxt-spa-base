@@ -1,11 +1,11 @@
 <template lang="pug">
-  #languages(v-click-outside="closeDropdown").inline-flex.justify-center.pr-4
+  #languages(v-click-outside="closeDropdown").inline-flex.justify-center.pr-4.relative
     button(
       aria-controls="language-dropdown"
       @click="showDropdown = !showDropdown"
       )#lang-dropdown-control.pl-2.pr-2
       span(:class="flagClasses(currentLocale)")
-    ul(:class="{ 'show': showDropdown }")#language-dropdown.absolute.bg-light.p-2.animate.bounceIn
+    ul(v-if="showDropdown")#language-dropdown.absolute.bg-light.p-2.animate-bounce-in
       li(
         v-for="locale in $i18n.locales"
         :key="locale.code"
@@ -48,13 +48,13 @@ export default {
 
 #languages {
   #language-dropdown {
-    display: none;
+    box-shadow: 1px 2px 2px $color-base-gray-light;
+    /* display: none; */
     top: 60px;
 
-    &.show {
+    /* &.show {
       display: block;
-      box-shadow: 1px 2px 2px $color-base-gray-light;
-    }
+    } */
   }
 }
 </style>

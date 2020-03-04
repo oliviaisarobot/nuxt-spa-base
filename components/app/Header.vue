@@ -1,5 +1,5 @@
 <template lang="pug">
-  header(:class="{ 'over-bg': scrollPosition > 90 }" ref="header").flex.justify-center
+  header(:class="{ 'over-bg': scrollPosition > 90 }").flex.justify-center
     #header-content.container.flex.justify-between.justify-center.p-0
       #logo.h-full
         nuxt-link(:to="localePath('index')", :title="$t('meta.description')").flex.items-center.justify-center.h-full.no-underline
@@ -25,7 +25,7 @@
           ).menu-button.flex.items-center.justify-center.hover_text-contrast.focus_text-contrast.pl-4.pr-4
           i.material-icons.text-2xl menu
         app-lang-select(:use-flags="true")
-    nav#menu-collapse(:class="{ 'show': showMenu }" v-click-outside="closeMenu").bg-light.border-r.border-t.border-primary.flex.justify-center.items-center.animate.slideRight
+    nav#menu-collapse(v-if="showMenu" v-click-outside="closeMenu").bg-light.flex.justify-center.items-center.animate-float-in
       button(@click="showMenu = !showMenu").absolute.top-0.right-0
         i.material-icons.text-primary.hover_text-contrast.focus_text-contrast.text-3xl.p-3 close
       ul.justify-center.w-full
@@ -37,6 +37,7 @@
             :active="currentPath == anchor"
             :to="localePath(anchor)"
             ).text-xl {{ $t('navigation.' + anchor) }}
+    #header-bounceback(v-if="scrollPosition > 90").animate-swing-in
 </template>
 
 <script>
@@ -90,23 +91,31 @@ header {
   min-height: $header-height;
   position: fixed;
   top: 0;
+  width: 100%;
   z-index: 1000;
-  width: 100vw;
   -webkit-transition: background-color 1s linear;
   -ms-transition: background-color 1s linear;
   transition: background-color 1s linear;
 
   &.over-bg {
-    background-color: $color-base-light!important;
-    box-shadow: 1px 2px 2px $color-base-gray-light;
     color: $color-base-dark!important;
     -webkit-transition: background-color 1s linear;
     -ms-transition: background-color 1s linear;
     transition: background-color 1s linear;
   }
+  
+  #header-bounceback {
+    background-color: $color-base-light!important;
+    box-shadow: -1px -2px 2px $color-base-gray-light;
+    left: 0;
+    min-height: $header-height;
+    position: absolute;
+    top: calc(0px - #{$header-height})!important;
+    width: 100%;
+    z-index: 999;
+  }
 
   #header-content {
-    /* background-color: inherit; */
     color: inherit;
     height: $header-height;
     overflow: visible;
@@ -120,20 +129,19 @@ header {
     bottom: 0;
     box-sizing: border-box;
     color: white;
-    display: none;
     font-size: .85em;
     height: 100vh;
     left: 0;
     margin: 0;
     max-width: 450px;
     min-height: 560px;
-    opacity: 0;
     padding: 0;
     position: absolute;
     text-align: center;
     top: $header-height;
     width: 65%;
     z-index: 1100;
+    box-shadow: 1px 2px 2px $color-base-gray-light;
 
     @include size-below(md) {
       max-width: 50%;
@@ -142,11 +150,6 @@ header {
     @include size-below(sm) {
       max-width: 100%;
       width: 100vw;
-    }
-
-    &.show {
-      display: flex;
-      opacity: 1;
     }
 
     &.nav {

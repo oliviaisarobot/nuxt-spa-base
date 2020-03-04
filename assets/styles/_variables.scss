@@ -11,7 +11,7 @@ $color-contrast:                #dd775f;
 
 $color-base-dark:               #222425;
 $color-base-light:              #e1e1e1;
-$color-base-gray-light:         #A5BFCC;
+$color-base-gray-light:         #c6c6c6;
 $color-base-gray-medium:        darken($color-base-gray-light, 25%);
 $color-base-gray-dark:          darken($color-base-gray-light, 50%);
 
@@ -57,7 +57,7 @@ $breakpoints: (
 ) !default;
 
 @mixin transition {
-  transition:                   .2s ease-in-out;
+  transition:                   all .2s ease-in-out;
 }
 
 @mixin noselect {
