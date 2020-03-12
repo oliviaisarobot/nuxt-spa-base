@@ -4,8 +4,8 @@ export const state = () => ({
     width: 767,
     scrollY: 0
   },
-  nav_short: ['anchor-1', 'anchor-2', 'anchor-3'],
-  nav: ['anchor-1', 'anchor-2', 'anchor-3', 'anchor-4', 'anchor-5', 'anchor-6'],
+  nav_short: ['lorem-1', 'lorem-2', 'lorem-3'],
+  nav: ['lorem-1', 'lorem-2', 'lorem-3', 'lorem-4', 'lorem-5', 'lorem-6'],
   breakpoints: {
     sm: 640,
     md: 768,

@@ -1,25 +1,21 @@
 <template lang="pug">
-  b-btn(
-    :class="{ 'cursor-pointer': page }"
-    :variant="variant"
+  button(
+    :class="classes"
     @click="goTo()"
-  ) {{ text }}
+    )
+    slot(name="content")
 </template>
 
 <script>
 export default {
   props: {
+    classes: {
+      type: String,
+      default: ''
+    },
     page: {
       type: String,
       default: ''
-    },
-    text: {
-      type: String,
-      default: ''
-    },
-    variant: {
-      type: String,
-      default: 'primary'
     }
   },
   methods: {

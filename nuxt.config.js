@@ -1,9 +1,8 @@
-/* eslint-disable no-path-concat */
 const pkg = require('./package')
 
 module.exports = {
   env: {
-    businessName: 'Business Name',
+    businessName: 'Lorem Ipsum',
     googleApiKey: '',
     gtagKey: ''
   },
@@ -11,10 +10,17 @@ module.exports = {
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'msapplication-TileColor', content: '#464159' },
+      { name: 'theme-color', content: '#ffffff' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'favicon/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+      { rel: 'apple-touch-icon', type: '180x180', href: '/apple-touch-icon.png' },
+      { rel: 'manifest', href: '/site.webmanifest' },
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
     ],
     script: [
       { src: 'https://platform.twitter.com/widgets.js', async: true },
@@ -23,7 +29,6 @@ module.exports = {
   },
   loading: { color: '#fff' },
   css: [
-    '@/assets/styles/style.scss',
     '@/node_modules/flag-icon-css/css/flag-icon.min.css',
     { src: '~/node_modules/highlight.js/styles/monokai.css', lang: 'css' }
   ],
@@ -40,6 +45,7 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/markdownit',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/style-resources',
     '@nuxtjs/pwa',
     ['nuxt-i18n', {
       locales: [
@@ -62,6 +68,11 @@ module.exports = {
       }
     }]
   ],
+  styleResources: {
+    scss: [
+      'assets/styles/style.scss'
+    ]
+  },
   rules: [
     {
       test: /\.md$/,
@@ -121,15 +132,7 @@ module.exports = {
   build: {
     transpile: [/^vue2-google-maps($|\/)/],
     extend(config, ctx) {
-      // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
-        // eslint-disable-next-line no-unused-expressions
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
         config.module.rules.push({
           test: /\.pug$/,
           loader: 'pug-plain-loader'
