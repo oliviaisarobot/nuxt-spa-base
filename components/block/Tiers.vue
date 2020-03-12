@@ -6,8 +6,10 @@
         :class="{ 'special': tier == specialIndex }"
         :key="'tier-' + tier"
         ).tier-card.mb-4
-        .tier-card-insert
-          .special-text(v-if="tier == specialIndex") {{ $t('index.tiers.special-text') }}
+        .tier-card-insert(:class="{ 'special': tier == specialIndex }")
+          .special-text(v-if="tier == specialIndex").uppercase
+            i.material-icons.pr-3.inline-block favorite
+            | {{ $t('index.tiers.special-text') }}
           .top(:class="{ 'special': tier == specialIndex }")
             h3 {{ $t('index.tiers.tier-' + tier + '.title') }}
             .tier-price
@@ -15,18 +17,22 @@
               .amount {{ $t('index.tiers.tier-' + tier + '.price.amount') }}
               .unit / {{ $t('index.tiers.tier-' + tier + '.price.unit') }}*
             ul.tier-content
-              li(v-if="Array.isArray(getTierContent(tier)) === true" v-for="item in getTierContent(tier)") {{ item }}
+              li(v-if="Array.isArray(getTierContent(tier)) === true" v-for="item in getTierContent(tier)")
+                i.material-icons.inline-block.pr-2 done
+                | {{ item }}
               p(v-else) {{ getTierContent(tier) }}
           .bottom(:class="{ 'special': tier == specialIndex }")
             .tier-link
-              b-btn(
-                :to="localePath(getTierLinkText(tier))"
-                :variant=" tier == specialIndex ? 'light' : 'secondary'"
-                ) {{ $t('navigation.' + getTierLinkText(tier)) }}
+              form-button(
+                to="tier"
+                )
+                template(slot="content") {{ $t('navigation.' + getTierLinkText(tier)) }}
     slot
 </template>
 
 <script>
+import FormButton from '~/components/form/Button'
+
 export default {
   props: {
     tierCount: {
@@ -35,8 +41,11 @@ export default {
     },
     specialIndex: {
       type: Number,
-      default: 3
+      default: 2
     }
+  },
+  components: {
+    FormButton
   },
   methods: {
     getTierContent(tier) {
@@ -64,41 +73,43 @@ export default {
     max-width: 370px;
     min-width: 330px!important;
     overflow: hidden;
-    transition: transform .5s ease;
+    transition: transform .5s ease-in-out;
 
     &:hover, &:focus, &:focus-within {
-      transform: scale(1.05);
+      transform: scale(1.025);
     }
 
     .tier-card-insert {
       align-items: stretch;
+      background: linear-gradient(white, $color-base-gray-light);
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
       height: 100%;
-      padding: 1em;
+      margin: .85em;
       position: relative;
+      
+      &.special {
+        background: linear-gradient($color-base-gray-medium, $color-secondary);
+      }
 
       .special-text {
-        background: linear-gradient(0.25turn, $color-base-gray-light, $color-base-gray-medium);
+        background: rgba(0, 0, 0, .2);
         color: white;
-        font-weight: bold;
-        left: 1em;
-        padding: .5em 0 .5em 1em;
+        left: 0;
+        padding: .5em 3em .5em 1em;
         position: absolute;
-        text-transform: uppercase;
-        top: 1em;
-        width: 50%;
+        top: 0;
+        -webkit-clip-path: polygon(100% 0, 76% 100%, 75% 100%, 0% 100%, 0 50%, 0% 0%);
+        clip-path: polygon(100% 0, 76% 100%, 75% 100%, 0% 100%, 0 50%, 0% 0%);
       }
 
       .top {
-        background: linear-gradient(white, $color-base-gray-light);
         flex-grow: 1;
         padding: 1em;
         min-width: 100%;
 
         &.special {
-          background: linear-gradient($color-base-gray-medium, $color-secondary);
           color: white;
 
           li {
@@ -111,8 +122,9 @@ export default {
         h3 {
           font-size: 1.5em!important;
           font-weight: bold;
-          height: 85px;
+          height: 45px;
           margin-bottom: 0.5em!important;
+          margin-top: 40px;
           text-align: center;
           text-transform: uppercase;
           padding: 0;
@@ -166,18 +178,12 @@ export default {
       }
 
       .bottom {
-        background-color: $color-base-gray-light;
-
-        &.special {
-          background-color: $color-secondary!important;
-        }
-
         .tier-link {
           align-items: center;
           align-self: flex-end;
           display: flex;
           justify-content: center;
-          margin: 0 0 1.5em 0;
+          margin: 0 0 3em 0;
 
           .btn {
             text-align: center;

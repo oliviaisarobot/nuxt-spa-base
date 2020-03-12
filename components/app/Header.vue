@@ -69,7 +69,7 @@ export default {
       return this.$router.path
     },
     logo() {
-      return this.scrollPosition < 90 ? require('~/assets/images/blank-image-white.svg') : require('~/assets/images/blank-image.svg')
+      return this.scrollPosition < 90 ? require('~/assets/images/logo-light.svg') : require('~/assets/images/logo-dark.svg')
     }
   },
   methods: {

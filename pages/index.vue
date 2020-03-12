@@ -4,6 +4,7 @@
       template(slot="heading")
         h1.text-white.text-6xl {{ $t('index.h1') }}
         div.text-white {{ $t('index.lead') }}
+    block-tiers
     block-tiles(:tiles="tilesOne").mt-8.mb-8.pt-8.pb-8
     hr.container
     block-content.mt-8.mb-8.pt-8.pb-8
@@ -22,6 +23,7 @@ import AppPageHeading from '~/components/app/PageHeading'
 import BlockContent from '~/components/block/Content'
 import BlockParallax from '~/components/block/Parallax'
 import BlockSlider from '~/components/block/Slider'
+import BlockTiers from '~/components/block/Tiers'
 import BlockTiles from '~/components/block/Tiles'
 
 export default {
@@ -31,6 +33,7 @@ export default {
     BlockContent,
     BlockParallax,
     BlockSlider,
+    BlockTiers,
     BlockTiles
   },
   computed: {

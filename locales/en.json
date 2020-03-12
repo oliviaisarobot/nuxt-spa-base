@@ -4,11 +4,50 @@
     "description": "Description"
   },
   "navigation": {
+    "lorem-1": "Lorem ipsum",
+    "lorem-2": "Ipsum dolor",
+    "lorem-3": "Dolor sit",
+    "lorem-4": "Sit amet",
+    "lorem-5": "Amet consectetur",
+    "lorem-6": "Consectetur adipiscing",
     "scroll-to-the-top": "Scroll to the top"
   },
   "index": {
-    "h1": "Are you ready?!",
-    "lead": "Kickstart your business with a unique website that boosts your online presence and helps you connect with your clients!"
+    "h1": "Lorem ipsum dolor sit amet",
+    "lead": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "tiers": {
+      "special-text": "Ipsum",
+      "tier-1": {
+        "title": "Lorem ipsum 1",
+        "content": ["ipsum1", "ipsum2", "ipsum3"],
+        "price": {
+          "currency": "EUR",
+          "amount": "30",
+          "unit": "month"
+        },
+        "link": "lorem-1"
+      },
+      "tier-2": {
+        "title": "Lorem ipsum 2",
+        "content": ["ipsum1", "ipsum2", "ipsum3", "ipsum4"],
+        "price": {
+          "currency": "EUR",
+          "amount": "40",
+          "unit": "month"
+        },
+        "link": "lorem-2"
+      },
+      "tier-3": {
+        "title": "Lorem ipsum 3",
+        "content": ["ipsum1", "ipsum2", "ipsum3", "ipsum4", "ipsum5"],
+        "price": {
+          "currency": "EUR",
+          "amount": "70",
+          "unit": "month"
+        },
+        "link": "lorem-3"
+      }
+    }
   },
   "posts": {
     "posts": "Posts"
