@@ -90,7 +90,7 @@ export default {
       position: relative;
       
       &.special {
-        background: linear-gradient($color-base-gray-medium, $color-secondary);
+        background: linear-gradient($color-base-gray-medium, $color-primary);
       }
 
       .special-text {
