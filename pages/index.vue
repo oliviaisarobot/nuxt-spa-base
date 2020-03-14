@@ -2,8 +2,8 @@
   div
     app-page-heading.index-heading
       template(slot="heading")
-        h1.text-white.text-6xl {{ $t('index.h1') }}
-        div.text-white {{ $t('index.lead') }}
+        h1.text-white.text-5xl.sm_text-6xl {{ $t('index.h1') }}
+        div.text-white.pb-6 {{ $t('index.lead') }}
     block-tiers
     block-tiles(:tiles="tilesOne").mt-8.mb-8.pt-8.pb-8
     hr.container

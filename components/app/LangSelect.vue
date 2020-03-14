@@ -5,18 +5,21 @@
       @click="showDropdown = !showDropdown"
       )#lang-dropdown-control.pl-2.pr-2
       span(:class="flagClasses(currentLocale)")
-    ul(v-if="showDropdown")#language-dropdown.absolute.bg-light.p-2.animate-bounce-in
+    ul(v-if="showDropdown")#language-dropdown.absolute.bg-light.animate-bounce-in
       li(
         v-for="locale in $i18n.locales"
         :key="locale.code"
         :title="locale.name"
         @click="showDropdown = !showDropdown"
-        ).text-primary.hover_text-dark.hover_bg-primary.hover_underline.focus_text-dark.focus_bg-primary.focus_underline.active_text-contrast.p-2
+        ).hover_bg-white.focus_bg-white
         nuxt-link(
           :active="currentLocale && currentLocale == locale.code"
           :to="switchLocalePath(locale.code)"
-          )
+          ).flex.no-wrap
           .inline-block(:class="flagClasses(locale.code)")
+          .inline-block.pl-3 {{ locale.name }}
+          .inline-block.pl-3(v-if="currentLocale == locale.code")
+            i.material-icons.font-bold done
 </template>
 
 <script>
@@ -51,10 +54,14 @@ export default {
     box-shadow: 1px 2px 2px $color-base-gray-light;
     /* display: none; */
     top: 60px;
+    right: 0;
 
-    /* &.show {
-      display: block;
-    } */
+    li {
+      a {
+        padding: 1em 1.5em 1em 1.5em;
+        text-decoration: none!important;
+      }
+    }
   }
 }
 </style>
