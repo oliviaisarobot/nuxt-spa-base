@@ -78,15 +78,16 @@ export default {
       /* padding-bottom: 100px; */
       /* padding-right: 65px; */
     }
+    
+    @include size-above(lg) {
+      bottom: 100px;
+      right: 100px;
+    }
   }
   
   @include size-below(sm) {
     visibility: visible;
   }
 
-  @include size-above(lg) {
-    bottom: 100px;
-    right: 100px;
-  }
 }
 </style>

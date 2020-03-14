@@ -24,6 +24,7 @@
           .bottom(:class="{ 'special': tier == specialIndex }")
             .tier-link
               form-button(
+                :classes="tier == specialIndex ? 'bg-white text-secondary' : 'bg-primary text-white'"
                 to="tier"
                 )
                 template(slot="content") {{ $t('navigation.' + getTierLinkText(tier)) }}
@@ -73,10 +74,10 @@ export default {
     max-width: 370px;
     min-width: 330px!important;
     overflow: hidden;
-    transition: transform .5s ease-in-out;
+    transition: transform .3s ease-in-out;
 
     &:hover, &:focus, &:focus-within {
-      transform: scale(1.025);
+      transform: translate(-5px, -5px);
     }
 
     .tier-card-insert {
@@ -90,7 +91,7 @@ export default {
       position: relative;
       
       &.special {
-        background: linear-gradient($color-base-gray-medium, $color-secondary);
+        background: linear-gradient($color-base-gray-medium, $color-primary);
       }
 
       .special-text {
