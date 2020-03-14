@@ -75,8 +75,6 @@ export default {
     
     @include size-below(sm) {
       opacity: 1;
-      /* padding-bottom: 100px; */
-      /* padding-right: 65px; */
     }
     
     @include size-above(lg) {

@@ -3,6 +3,55 @@
     "title": "HU - Title",
     "description": "HU - Description"
   },
+  "navigation": {
+    "lorem-1": "HU - Lorem ipsum",
+    "lorem-2": "HU - Ipsum dolor",
+    "lorem-3": "HU - Dolor sit",
+    "lorem-4": "HU - Sit amet",
+    "lorem-5": "HU - Amet consectetur",
+    "lorem-6": "HU - Consectetur adipiscing",
+    "scroll-to-the-top": "HU - Scroll to the top"
+  },
+  "index": {
+    "h1": "HU - Lorem ipsum dolor sit amet",
+    "lead": "HU - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "tiers": {
+      "special-text": "HU - Ipsum",
+      "tier-1": {
+        "title": "HU - Lorem ipsum 1",
+        "content": ["HU - ipsum1", "HU - ipsum2", "HU - ipsum3"],
+        "price": {
+          "currency": "EUR",
+          "amount": "30",
+          "unit": "HU - month"
+        },
+        "link": "lorem-1"
+      },
+      "tier-2": {
+        "title": "HU - Lorem ipsum 2",
+        "content": ["HU - ipsum1", "HU - ipsum2", "HU - ipsum3", "HU - ipsum4"],
+        "price": {
+          "currency": "EUR",
+          "amount": "40",
+          "unit": "HU - month"
+        },
+        "link": "lorem-2"
+      },
+      "tier-3": {
+        "title": "HU - Lorem ipsum 3",
+        "content": ["HU - ipsum1", "HU - ipsum2", "HU - ipsum3", "HU - ipsum4", "HU - ipsum5"],
+        "price": {
+          "currency": "EUR",
+          "amount": "70",
+          "unit": "HU - month"
+        },
+        "link": "lorem-3"
+      }
+    }
+  },
+  "posts": {
+    "posts": "HU - Posts"
+  },
   "placeholders": {
     "header": "HU - Lorem ipsum dolor sit amet",
     "paragraph": "HU - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
