@@ -23,30 +23,30 @@ module.exports = {
       { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
     ],
     script: [
-      { src: 'https://platform.twitter.com/widgets.js', async: true },
-      { src: 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0', async: true, defer: true }
+      // { src: 'https://platform.twitter.com/widgets.js', async: true },
+      // { src: 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0', async: true, defer: true }
     ]
   },
   loading: { color: '#fff' },
   css: [
     '@/node_modules/flag-icon-css/css/flag-icon.min.css',
-    { src: '~/node_modules/highlight.js/styles/monokai.css', lang: 'css' }
+    // { src: '~/node_modules/highlight.js/styles/monokai.css', lang: 'css' }
   ],
   plugins: [
     '~/plugins/click-outside.js',
-    '~/plugins/form-elements.js',
-    '~/plugins/vue-touch-events.js',
-    '~/plugins/vue-moment.js',
-    { src: '~/plugins/gtag.js', ssr: false },
-    { src: '~/plugins/google-maps', ssr: false },
-    { src: '~/plugins/youtube-embed.js', ssr: false }
+    // '~/plugins/form-elements.js',
+    // '~/plugins/vue-touch-events.js',
+    // '~/plugins/vue-moment.js',
+    // { src: '~/plugins/gtag.js', ssr: false },
+    // { src: '~/plugins/google-maps', ssr: false },
+    // { src: '~/plugins/youtube-embed.js', ssr: false }
   ],
   modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/markdownit',
+    // '@nuxtjs/axios',
+    // '@nuxtjs/markdownit',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
     ['nuxt-i18n', {
       locales: [
         { code: 'en', iso: 'en-GB', name: 'English' },
@@ -119,18 +119,18 @@ module.exports = {
       return { x: 0, y: 0 };
     }
   },
-  markdownit: {
-    html: true,
-    injected: true,
-    preset: 'default',
-    linkify: true,
-    breaks: true,
-    use: [
-      'markdown-it-highlightjs'
-    ]
-  },
+  // markdownit: {
+  //   html: true,
+  //   injected: true,
+  //   preset: 'default',
+  //   linkify: true,
+  //   breaks: true,
+  //   use: [
+  //     'markdown-it-highlightjs'
+  //   ]
+  // },
   build: {
-    transpile: [/^vue2-google-maps($|\/)/],
+    // transpile: [/^vue2-google-maps($|\/)/],
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
