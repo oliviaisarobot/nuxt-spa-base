@@ -27,7 +27,7 @@ import BlockTiers from '~/components/block/Tiers'
 import BlockTiles from '~/components/block/Tiles'
 
 export default {
-  layout: 'maintenance',
+  layout: 'default',
   components: {
     AppPageHeading,
     BlockContent,

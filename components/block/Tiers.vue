@@ -74,10 +74,17 @@ export default {
     max-width: 370px;
     min-width: 330px!important;
     overflow: hidden;
-    transition: transform .3s ease-in-out;
+    transition: transform .2s ease;
+    -webkit-transition: -webkit-transform .2s ease;
+    -moz-transition: -moz-transform 0.2s ease;
 
     &:hover, &:focus, &:focus-within {
-      transform: translate(-5px, -5px);
+      transition: transform .2s ease;
+      -webkit-transition: -webkit-transform .2s ease;
+      -moz-transition: -moz-transform 0.2s ease;
+      -webkit-transform: translate(-2px, -2px);
+      -moz-transform: translate(-2px, -2px);
+      transform: translate(-2px, -2px);
     }
 
     .tier-card-insert {
